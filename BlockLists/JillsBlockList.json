@@ -82,10 +82,6 @@
             {
               "Name": "SM_Poster2",
               "Behavior": "delete"
-            },
-            {
-              "Name": "test",
-              "Behavior": "nothing"
             }
           ]
         }
