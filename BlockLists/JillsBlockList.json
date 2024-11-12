@@ -1,0 +1,95 @@
+{
+  "UpdateURL": "",
+  "Worlds": [
+    {
+      "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
+      "Objects": [
+        {
+          "Name": "world",
+          "Children": [
+            {
+              "Name": "ads",
+              "Children": [
+                {
+                  "Name": "friends",
+                  "Children": [
+                    {
+                      "Index": 1,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 2,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 3,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 4,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 5,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 6,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 7,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 8,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 9,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 10,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 11,
+                      "Behavior": "delete"
+                    },
+                    {
+                      "Index": 12,
+                      "Behavior": "delete"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
+      "Objects": [
+        {
+          "Name": "nightclub",
+          "Children": [
+            {
+              "Name": "SM_Poster1",
+              "Behavior": "delete"
+            },
+            {
+              "Name": "SM_Poster2",
+              "Behavior": "delete"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Avatars": [
+  ],
+  "Props": [
+  ]
+}
