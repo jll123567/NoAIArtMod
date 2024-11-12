@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /.ManagedLibs
 /References.Items.props
+/NStrip.exe

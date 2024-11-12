@@ -1,6 +1,6 @@
 # No AI Art
 
-A ChilloutVR mod to remove objects based on a black list.
+A ChilloutVR mod to remove objects based on a block list.
 
 ## Installation
 Check [Releases(FIXME)]() for the latest `NoAIArt.dll` and put it in your mods folder in CVR's installation directory.
