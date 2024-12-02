@@ -1,19 +1,17 @@
-﻿using MelonLoader;
-using HarmonyLib;
-using UnityEngine;
-using ABI.CCK.Components;
-using ABI_RC.Core.Savior;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using Newtonsoft.Json;
-using UnityEngine.SceneManagement;
-using Aura2API;
-using System;
-using System.Text;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using MelonLoader;
+using HarmonyLib;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using ABI.CCK.Components;
+using ABI_RC.Core.Savior;
+using Newtonsoft.Json;
+using Aura2API;
 
 
 
@@ -22,12 +20,27 @@ namespace NoAIArt
     public class Core : MelonMod
     {
         private static readonly string ModDataFolder = Path.GetFullPath(Path.Combine("UserData", nameof(NoAIArt)));
-        private static List<BlockList> BlockLists = new List<BlockList>();
+        private static List<BlockList> BlockLists;
         private static Material ReplacementMaterial = new Material(Shader.Find("Standard"));
         private static float lastPropBlock = Time.time;
 
         public override void OnInitializeMelon()
         {
+            LoadBlocklists();
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Equals))
+            {
+                LoadBlocklists();
+            }
+        }
+
+        internal static void LoadBlocklists()
+        {
+            BlockLists = new List<BlockList>();
             int worldTally = 0, propTally = 0, avatarTally = 0;
             var blockListPaths = Directory.GetFiles(ModDataFolder, "*.json");
             foreach (var blockListPath in blockListPaths)
@@ -43,8 +56,8 @@ namespace NoAIArt
                         continue;
                     }
 
-                    
-                    
+
+
                     string pattern = @"^https:\/\/raw\.githubusercontent\.com\/.*\.json$";  // Updater
                     if (Regex.IsMatch(deserealizedBlockList.UpdateURL, pattern))  // Only update if pulling from a verified source.
                     {
@@ -61,7 +74,8 @@ namespace NoAIArt
                             deserealizedBlockList = JsonConvert.DeserializeObject<BlockList>(latestBlockList);
                         }
                     }
-                    else if (!deserealizedBlockList.UpdateURL.Equals("")){
+                    else if (!deserealizedBlockList.UpdateURL.Equals(""))
+                    {
                         MelonLogger.Warning($"This blocklist ({blockListPath}) has a update URL that does not match\n {pattern}\nNot updating.");
                     }
 
@@ -70,14 +84,13 @@ namespace NoAIArt
                     propTally += deserealizedBlockList.Props.Count;
                     avatarTally += deserealizedBlockList.Avatars.Count;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     MelonLogger.Error($"Your Blocklist({blockListPath}) is malformed. Specifics below:\n\n{e.Message}\n\n{File.ReadAllText(blockListPath)}");
                 }
 
             }
-            LoggerInstance.Msg($"NoAiArt Initialized: Found {worldTally} world(s), {propTally} prop(s), and {avatarTally} avatars(s).");
-            
+            MelonLogger.Msg($"NoAiArt Initialized: Found {worldTally} world(s), {propTally} prop(s), and {avatarTally} avatars(s).");
         }
 
         internal static void RemoveBlockedWorldObject(BlockedWorldObject objectSpec, GameObject? parrent = null)

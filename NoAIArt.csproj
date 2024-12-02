@@ -165,8 +165,17 @@
     <Reference Include="Unity.VectorGraphics">
       <HintPath>.ManagedLibs\Unity.VectorGraphics.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>.ManagedLibs\UnityEngine.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>.ManagedLibs\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>.ManagedLibs\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>.ManagedLibs\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteShapeModule">
       <HintPath>.ManagedLibs\UnityEngine.SpriteShapeModule.dll</HintPath>
