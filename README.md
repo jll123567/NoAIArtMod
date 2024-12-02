@@ -42,8 +42,8 @@ There are four available `Behavior`s:
 
 ## Todo
 
-- [ ] Index Ranges
-- [ ] Specifiy a specific material slot for material replacement.
+- [x] Index Ranges
+- [x] Specifiy a specific material slot for material replacement.
 - [ ] Name Regex
 
 ## Disclaimer

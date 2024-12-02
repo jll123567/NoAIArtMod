@@ -20,7 +20,7 @@ namespace NoAIArt
     public class Core : MelonMod
     {
         private static readonly string ModDataFolder = Path.GetFullPath(Path.Combine("UserData", nameof(NoAIArt)));
-        private static List<BlockList> BlockLists;
+        private static List<BlockList> BlockLists = new List<BlockList>();
         private static Material ReplacementMaterial = new Material(Shader.Find("Standard"));
         private static float lastPropBlock = Time.time;
 
@@ -35,6 +35,23 @@ namespace NoAIArt
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Equals))
             {
                 LoadBlocklists();
+            }
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Minus))
+            {
+                foreach (BlockList blockList in BlockLists)
+                {
+                    foreach (BlockedWorld blockedWorld in blockList.Worlds)
+                    {
+                        if (MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
+                        {
+                            MelonLogger.Msg(System.Drawing.Color.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            foreach (BlockedWorldObject blockedObject in blockedWorld.Objects)
+                            {
+                                FindBlockedWorldObject(blockedObject);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -93,21 +110,43 @@ namespace NoAIArt
             MelonLogger.Msg($"NoAiArt Initialized: Found {worldTally} world(s), {propTally} prop(s), and {avatarTally} avatars(s).");
         }
 
-        internal static void RemoveBlockedWorldObject(BlockedWorldObject objectSpec, GameObject? parrent = null)
+        internal static void FindBlockedWorldObject(BlockedWorldObject objectSpec, GameObject? parrent = null)
         {
-            GameObject? current = null;
+            bool failed = true;
             if(parrent is null) // Check root of world scene.
             {
                 if (objectSpec.Index >= 0)  // Get object by index (prefered)
                 {
-                    current = SceneManager.GetActiveScene().GetRootGameObjects()[objectSpec.Index];
+                    failed = false;
+                    RemoveBlockedWorldObject(objectSpec, SceneManager.GetActiveScene().GetRootGameObjects()[objectSpec.Index]);
+                }
+                else if (objectSpec.IndexRange.Length == 2)  // Using a range [a,b] possibly with exclusions [e1, ..., en].
+                {
+                    for (int i = objectSpec.IndexRange[1]; i >= objectSpec.IndexRange[0]; i--)
+                    {
+                        bool skip = false;
+                        foreach(int e in objectSpec.RangeExclusions)
+                        {
+                            if (e == i)
+                            {
+                                skip = true;
+                                break;
+                            }
+                        }
+                        if (!skip)
+                        {
+                            failed = false;
+                            RemoveBlockedWorldObject(objectSpec, SceneManager.GetActiveScene().GetRootGameObjects()[i]);
+                        }
+                    }
                 }
                 else {  // Get object by name.
                     foreach (GameObject g in SceneManager.GetActiveScene().GetRootGameObjects())  // GameObject.Find is too broad and Transform.Find needs a transform to start with.
                     {
                         if(g.name == objectSpec.Name)
                         {
-                            current = g;
+                            failed = false;
+                            RemoveBlockedWorldObject(objectSpec, g);
                             break;
                         }
                     } 
@@ -115,39 +154,84 @@ namespace NoAIArt
             }
             else  // Check parrent object.
             {
-                if(objectSpec.Index >= 0) // Get object by index (prefered)
+                try
                 {
-                    current = parrent.transform.GetChild(objectSpec.Index).gameObject;
+                    if (objectSpec.Index >= 0) // Get object by index (prefered)
+                    {
+                        failed = false;
+                        RemoveBlockedWorldObject(objectSpec, parrent.transform.GetChild(objectSpec.Index).gameObject);
+                    }
+                    else if (objectSpec.IndexRange.Length == 2)  // Using a range [a,b] possibly with exclusions [e1, ..., en].
+                    {
+                        for (int i = objectSpec.IndexRange[1]; i >= objectSpec.IndexRange[0]; i--)
+                        {
+                            bool skip = false;
+                            foreach (int e in objectSpec.RangeExclusions)
+                            {
+                                if (e == i)
+                                {
+                                    skip = true;
+                                    break;
+                                }
+                            }
+                            if (!skip)
+                            {
+                                GameObject? result;
+                                try
+                                {
+                                    failed = false;
+                                    RemoveBlockedWorldObject(objectSpec, parrent.transform.GetChild(i).gameObject);
+                                }
+                                catch(UnityEngine.UnityException e)
+                                {
+                                    failed = true;
+                                    MelonLogger.Warning($"Your IndexRange under {parrent.name} went out of bounds.\n Your blocklist probably has nested ranges that are too big...");
+                                }
+                                
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GameObject result = parrent.transform.Find(objectSpec.Name).gameObject;
+                        if (result != null)
+                        {
+                            failed = false;
+                            RemoveBlockedWorldObject(objectSpec, result);  // Find will only check current level. (unless object has a / in name. Hopefully world creator was not insane!)
+                        }
+                    }
                 }
-                else
+                catch(Exception e)
                 {
-                    current = parrent.transform.Find(objectSpec.Name).gameObject;  // Find will only check current level. (unless object has a / in name. Hopefully world creator was not insane!)
+                    MelonLogger.Error(e);
                 }
             }
-            if(current is null)
+            if(failed)
             {
-                MelonLogger.Error($"Could not find object. Name:{objectSpec.Name}, Index:{objectSpec.Index}, Parrent: {parrent?.name}");
-                return;
+                MelonLogger.Error($"Could not find object. Name:{objectSpec.Name}, Index:{objectSpec.Index}, IndexRange: {objectSpec.IndexRange.Length == 2}, Parrent: {parrent?.name}");
             }
+        }
 
-            if(objectSpec.Behavior == "delete")
+        internal static void RemoveBlockedWorldObject(BlockedWorldObject objectSpec, GameObject current)
+        {
+            if (objectSpec.Behavior == "delete")
             {
                 current.Destroy(); // Delete the current game object. NOT PARSING CHILDREN!!!
             }
             else  // Other options require parsing spec children.
             {
-                if(objectSpec.Behavior == "no-render")  // Remove mesh renderers.
+                if (objectSpec.Behavior == "no-render")  // Remove mesh renderers.
                 {
-                    foreach(MeshRenderer m in current.GetComponents<MeshRenderer>())
+                    foreach (MeshRenderer m in current.GetComponents<MeshRenderer>())
                     {
                         m.Destroy();
                     }
-                    foreach(SkinnedMeshRenderer sm in current.GetComponents<SkinnedMeshRenderer>())
+                    foreach (SkinnedMeshRenderer sm in current.GetComponents<SkinnedMeshRenderer>())
                     {
                         sm.Destroy();
                     }
                 }
-                else if(objectSpec.Behavior == "change-material")  // Change mesh renderer materials.
+                else if (objectSpec.Behavior == "change-material")  // Change mesh renderer materials.
                 {
                     foreach (MeshRenderer m in current.GetComponents<MeshRenderer>())
                     {
@@ -179,9 +263,9 @@ namespace NoAIArt
                     }
                 }
 
-                foreach(BlockedWorldObject childSpec in objectSpec.Children)  // Parse child specs recursively.
+                foreach (BlockedWorldObject childSpec in objectSpec.Children)  // Parse child specs recursively.
                 {
-                    RemoveBlockedWorldObject(childSpec, current);
+                    FindBlockedWorldObject(childSpec, current);
                 }
             }
         }
@@ -202,7 +286,7 @@ namespace NoAIArt
                             MelonLogger.Msg(System.Drawing.Color.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
                             foreach (BlockedWorldObject blockedObject in blockedWorld.Objects)
                             {
-                                RemoveBlockedWorldObject(blockedObject);
+                                FindBlockedWorldObject(blockedObject);
                             }
                         }
                     }
@@ -282,6 +366,8 @@ namespace NoAIArt
         {
             public string Name { get; set; } = "";
             public int Index { get; set; } = -1;
+            public int[] IndexRange { get; set; } = new int[0];
+            public int[] RangeExclusions { get; set; } = new int[0];
             public int[] MaterialReplacementIndicies { get; set; } = new int[0];
             public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
             public string Behavior { get; set; } = "nothing";
