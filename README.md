@@ -40,6 +40,12 @@ There are four available `Behavior`s:
 
 (Instructions pulled from https://github.com/kafeijao/Kafe_CVR_Mods)
 
+## Todo
+
+- [ ] Index Ranges
+- [ ] Specifiy a specific material slot for material replacement.
+- [ ] Name Regex
+
 ## Disclaimer
 
 This is independant of, not affiliated with, supported by, or approved by Alpha Blend Interactive.

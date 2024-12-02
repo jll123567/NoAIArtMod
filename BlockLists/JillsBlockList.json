@@ -1,95 +1,297 @@
 {
-  "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/JillsBlockList.json",
-  "Worlds": [
-    {
-      "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
-      "Objects": [
+    "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/JillsBlockList.json",
+    "Worlds": [
         {
-          "Name": "world",
-          "Children": [
-            {
-              "Name": "ads",
-              "Children": [
+            "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
+            "Objects": [
                 {
-                  "Name": "friends",
-                  "Children": [
-                    {
-                      "Index": 1,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 2,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 3,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 4,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 5,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 6,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 7,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 8,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 9,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 10,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 11,
-                      "Behavior": "delete"
-                    },
-                    {
-                      "Index": 12,
-                      "Behavior": "delete"
-                    }
-                  ]
+                    "Name": "world",
+                    "Children": [
+                        {
+                            "Name": "ads",
+                            "Children": [
+                                {
+                                    "Name": "friends",
+                                    "Children": [
+                                        {
+                                            "Index": 1,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 2,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 3,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 4,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 5,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 6,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 7,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 8,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 9,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 10,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 11,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 12,
+                                            "Behavior": "delete"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Id": "4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
-      "Objects": [
+            ]
+        },
         {
-          "Name": "nightclub",
-          "Children": [
-            {
-              "Name": "SM_Poster1",
-              "Behavior": "delete"
-            },
-            {
-              "Name": "SM_Poster2",
-              "Behavior": "delete"
-            }
-          ]
+            "Id": "4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
+            "Objects": [
+                {
+                    "Name": "nightclub",
+                    "Children": [
+                        {
+                            "Name": "SM_Poster1",
+                            "Behavior": "delete"
+                        },
+                        {
+                            "Name": "SM_Poster2",
+                            "Behavior": "delete"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "16fddf0c-a949-4058-96d3-2233f4ea69d6",
+            "Objects": [
+                {
+                    "Name": "Main Room",
+                    "Children": [
+                        {
+                            "Name": "eepy",
+                            "Children": [
+                                {
+                                    "Index": 13,
+                                    "Behavior": "delete"
+                                },
+                                {
+                                    "Index": 14,
+                                    "Behavior": "delete"
+                                },
+                                {
+                                    "Index": 15,
+                                    "Behavior": "delete"
+                                },
+                                {
+                                    "Index": 20,
+                                    "Behavior": "delete"
+                                },
+                                {
+                                    "Index": 21,
+                                    "Behavior": "delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "406acf24-99b1-4119-8883-4fcda4250743",
+            "Objects": [
+                {
+                    "Name": "PicFrameLandscape Variant",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant (1)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant (2)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant (4)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant (5)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant (7)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait (1)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait (2)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait (5)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait (6)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait Variant",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait Variant (1)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait Variant (2)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait Variant (3)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait Variant (4)",
+                    "Behavior": "delete"
+                }
+            ]
+        },
+        {
+            "Id": "88e9a47b-969a-4ef1-b0dd-46b6e12292bc",
+            "Objects": [
+                {
+                    "Name": "PicFrameLandscape Variant (1)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFrameLandscape Variant (2)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "PicFramePortrait Variant (2)",
+                    "Behavior": "delete"
+                }
+            ]
+        },
+        {
+            "Id": "4a370420-39d6-4f23-b38d-b5a336195e20",
+            "Objects": [
+                {
+                    "Name": "gallery",
+                    "Children": [
+                        {
+                            "Name": "world",
+                            "Children": [
+                                {
+                                    "Name": "galleria",
+                                    "Children": [
+                                        {
+                                            "Index": 1,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 2,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 3,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 4,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 5,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 6,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 7,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 8,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 11,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 12,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Index": 13,
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Name": "pepe statue",
+                                            "Children": [
+                                                {
+                                                    "Name": "pepe movie 1",
+                                                    "Children": [
+                                                        {
+                                                            "Name": "movie poster",
+                                                            "Children": [
+                                                                {
+                                                                    "Name": "Poster",
+                                                                    "Behavior": "delete"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "Avatars": [
-  ],
-  "Props": [
-  ]
+    ],
+    "Avatars": [],
+    "Props": []
 }
