@@ -1,0 +1,148 @@
+﻿{
+    "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AIGallery.json",
+    "Worlds": [
+        {
+            "Id": "4a370420-39d6-4f23-b38d-b5a336195e20",
+            "Objects": [
+                {
+                    "Name": "gallery",
+                    "Children": [
+                        {
+                            "Name": "world",
+                            "Children": [
+                                {
+                                    "Name": "galleria",
+                                    "Children": [
+                                        {
+                                            "IndexRange": [ 1, 13 ],
+                                            "RangeExclusions": [ 9, 10 ],
+                                            "Behavior": "delete"
+                                        },
+                                        {
+                                            "Name": "pepe statue",
+                                            "Children": [
+                                                {
+                                                    "Name": "pepe movie 1",
+                                                    "Children": [
+                                                        {
+                                                            "Name": "movie poster",
+                                                            "Children": [
+                                                                {
+                                                                    "Name": "Poster",
+                                                                    "Behavior": "delete"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "18107b30-9c9b-426e-a518-f1b62196ba2a",
+            "Objects": [
+                {
+                    "Name": "World",
+                    "Children": [
+                        {
+                            "Name": "art gallery room",
+                            "Children": [
+                                {
+                                    "IndexRange": [ 1, 176 ],
+                                    "Behavior": "delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "3d73bd9a-1f0c-474c-bb7c-81990efcf8bb",
+            "Objects": [
+                {
+                    "Name": "World",
+                    "Children": [
+                        {
+                            "Name": "art gallery room",
+                            "Children": [
+                                {
+                                    "IndexRange": [ 1, 176 ],
+                                    "Behavior": "delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "b159c777-087e-46ba-be12-8b94fc5819dd",
+            "Objects": [
+                {
+                    "Name": "World",
+                    "Children": [
+                        {
+                            "Name": "art gallery room",
+                            "Children": [
+                                {
+                                    "IndexRange": [ 1, 176 ],
+                                    "Behavior": "delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "dd76b1d8-7c4f-472e-9dce-45d3394b883c",
+            "Objects": [
+                {
+                    "Name": "World",
+                    "Children": [
+                        {
+                            "Name": "art gallery room",
+                            "Children": [
+                                {
+                                    "IndexRange": [ 1, 176 ],
+                                    "Behavior": "delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Id": "03fe9262-e9d8-40fa-a863-d862ee7b4567",
+            "Objects": [
+                {
+                    "Name": "master sketchfab scene 2",
+                    "Children": [
+                        {
+                            "IndexRange": [ 14, 60 ],
+                            "RangeException": [ 19 ],
+                            "Behavior": "delete"
+                        },
+                        {
+                            "Index": 0,
+                            "Behavior": "delete"
+                        },
+                        {
+                            "Index": 1,
+                            "Behavior": "delete"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
