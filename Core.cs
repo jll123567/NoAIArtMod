@@ -138,11 +138,23 @@ namespace NoAIArt
                 {
                     foreach (MeshRenderer m in current.GetComponents<MeshRenderer>())
                     {
-                       m.material = ReplacementMaterial;
-                       for(int i =0; i < m.materials.Length; i++)
+                        Material[] newMats = m.materials;
+                        if (objectSpec.MaterialReplacementIndicies.Length == 0)  // Replace all.
                         {
-                            m.materials[i] = ReplacementMaterial;
+                            m.material = ReplacementMaterial;
+                            for (int i = 0; i < m.materials.Length; i++)
+                            {
+                                newMats[i] = ReplacementMaterial;
+                            }
                         }
+                        else // Replace some.
+                        {
+                            foreach (int i in objectSpec.MaterialReplacementIndicies)
+                            {
+                                newMats[i] = ReplacementMaterial;
+                            }
+                        }
+                        m.materials = newMats;
                     }
                     foreach (SkinnedMeshRenderer sm in current.GetComponents<SkinnedMeshRenderer>())
                     {
@@ -257,6 +269,7 @@ namespace NoAIArt
         {
             public string Name { get; set; } = "";
             public int Index { get; set; } = -1;
+            public int[] MaterialReplacementIndicies { get; set; } = new int[0];
             public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
             public string Behavior { get; set; } = "nothing";
         }
