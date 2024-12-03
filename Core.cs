@@ -262,6 +262,11 @@ namespace NoAIArt
                         }
                     }
                 }
+                else if (objectSpec.Behavior == "move")
+                {
+                    Vector3 moveVector3 = new Vector3(objectSpec.MoveVector[0], objectSpec.MoveVector[1], objectSpec.MoveVector[2]);
+                    current.transform.localPosition += moveVector3;
+                }
 
                 foreach (BlockedWorldObject childSpec in objectSpec.Children)  // Parse child specs recursively.
                 {
@@ -369,6 +374,7 @@ namespace NoAIArt
             public int[] IndexRange { get; set; } = new int[0];
             public int[] RangeExclusions { get; set; } = new int[0];
             public int[] MaterialReplacementIndicies { get; set; } = new int[0];
+            public float[] MoveVector { get; set; } = new float[3];
             public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
             public string Behavior { get; set; } = "nothing";
         }

@@ -1,0 +1,21 @@
+{
+    "Worlds": [
+        {
+            "Id": "fc952f53-82b4-45b3-b706-a89aafa5c84e",
+            "Objects": [
+                {
+                    "Name": "New Menu",
+                    "Children": [
+                        {
+                            "Name": "Menu",
+                            "Behavior": "move",
+                            "MoveVector": [-0.01, 0, 0]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "Avatars": [],
+    "Props": []
+}
