@@ -254,7 +254,7 @@
             ]
         }
     ],
-    "Avatars": ["696d2ab2-b08e-4e75-b9af-81fea22217a4"],
+    "Avatars": ["696d2ab2-b08e-4e75-b9af-81fea22217a4", "32e767e4-dd9f-421e-b899-d32254c8172c", "f95bba1f-ecd8-4967-ac2e-7ce16186f33b"],
     "Props": [
         "0d02a748-9945-4360-93db-bf5712c78671",
         "13fa18f6-705b-4c71-b3ee-f53309cc7699",
@@ -277,6 +277,7 @@
         "f5e0ee6a-df83-460c-8e95-df89aa9f9b24",
         "f5e0ee6a-df83-460c-8e95-df89aa9f9b24",
         "fd00aabb-af4c-4788-b022-dc810fc292fc",
-        "f5bd401b-52dc-40a8-8947-a67512b27da2"        
+        "f5bd401b-52dc-40a8-8947-a67512b27da2",
+        "d2770d77-1e57-4e21-8eec-0ae56a841af7"
     ]
 }
