@@ -252,9 +252,34 @@
                     ]
                 }
             ]
+        },
+        {
+            "Id": "76a714a6-1aa4-48e9-9ff5-c79d0278eb7b",
+            "Objects": [
+                {
+                    "Name": "SM_Prop_Picture_01 (4)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "SM_Prop_Picture_01 (5)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "SM_Prop_Picture_01 (6)",
+                    "Behavior": "delete"
+                },
+                {
+                    "Name": "SM_Prop_Picture_01 (7)",
+                    "Behavior": "delete"
+                },
+            ]
         }
     ],
-    "Avatars": ["696d2ab2-b08e-4e75-b9af-81fea22217a4", "32e767e4-dd9f-421e-b899-d32254c8172c", "f95bba1f-ecd8-4967-ac2e-7ce16186f33b"],
+    "Avatars": [
+        "696d2ab2-b08e-4e75-b9af-81fea22217a4", 
+        "32e767e4-dd9f-421e-b899-d32254c8172c", 
+        "f95bba1f-ecd8-4967-ac2e-7ce16186f33b"
+    ],
     "Props": [
         "0d02a748-9945-4360-93db-bf5712c78671",
         "13fa18f6-705b-4c71-b3ee-f53309cc7699",
