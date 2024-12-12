@@ -12,6 +12,8 @@ using ABI.CCK.Components;
 using ABI_RC.Core.Savior;
 using Newtonsoft.Json;
 using Aura2API;
+using ABI_RC.Core.Player;
+using RTG;
 
 
 
@@ -23,6 +25,7 @@ namespace NoAIArt
         private static List<BlockList> BlockLists = new List<BlockList>();
         private static Material ReplacementMaterial = new Material(Shader.Find("Standard"));
         private static float lastPropBlock = Time.time;
+        private static List<string> SeenBadAvis = new List<string>();
 
         public override void OnInitializeMelon()
         {
@@ -32,11 +35,11 @@ namespace NoAIArt
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Equals))
+            if ((Input.GetKey(KeyCode.LeftControl)|| Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Equals))
             {
                 LoadBlocklists();
             }
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Minus))
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Minus))
             {
                 foreach (BlockList blockList in BlockLists)
                 {
@@ -52,6 +55,10 @@ namespace NoAIArt
                         }
                     }
                 }
+            }
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                DisplayObjects();
             }
         }
 
@@ -275,6 +282,34 @@ namespace NoAIArt
             }
         }
 
+        internal void DisplayObjects()
+        {
+            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "===============Dumping world/avatar/prop ids==============");
+
+            MelonLogger.Msg(System.Drawing.Color.GreenYellow, $"World: {MetaPort.Instance.CurrentWorldId}");
+            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "                      Avatars");
+            MelonLogger.Msg(System.Drawing.Color.YellowGreen, $"You are using {PlayerSetup.Instance._avatar.GetComponent<CVRAssetInfo>().objectId}");
+            foreach (CVRPlayerEntity playerEntity in CVRPlayerManager.Instance.NetworkPlayers)
+            {
+                MelonLogger.Msg(System.Drawing.Color.GreenYellow, $"{playerEntity.Username} using {playerEntity.AvatarId}");
+            }
+            
+
+            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "                       Props");
+            foreach (GameObject potentialProp in SceneManager.GetSceneAt(1).GetRootGameObjects())
+            {
+                if (potentialProp.name.StartsWith("p"))
+                {
+                    GameObject prop = potentialProp.GetAllChildren()[0];
+                    string propId = prop.GetComponent<CVRAssetInfo>().objectId;
+                    float distance = Vector3.Distance(prop.transform.position, PlayerSetup.Instance.GetHipBone().position);
+                    MelonLogger.Msg(System.Drawing.Color.GreenYellow, $"Prop {propId}: {distance}m");
+
+                }
+            }
+            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "====================================================");
+        }
+
         [HarmonyPatch]
         internal class HarmonyPatches
         {
@@ -340,10 +375,12 @@ namespace NoAIArt
                 {
                     foreach (string blockedAvatarId in bl.Avatars)
                     {
-                        if (avatarGUID == blockedAvatarId)
+                        
+                        if (avatarGUID == blockedAvatarId && !SeenBadAvis.Contains(avatarGUID))
                         {
                             MelonLogger.Msg(System.Drawing.Color.Red, $"Avatar in block list, blocking: {avatarGUID}");
                             wasForceHidden = true;
+                            SeenBadAvis.Add(avatarGUID);
                             return false;
                         }
                     }
