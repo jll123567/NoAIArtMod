@@ -271,7 +271,7 @@
                 {
                     "Name": "SM_Prop_Picture_01 (7)",
                     "Behavior": "delete"
-                },
+                }
             ]
         }
     ],
@@ -316,7 +316,7 @@
         "bdb15d85-f5ba-46b3-ad54-0acffbdfca31",
         "27718d91-eb30-4049-bd61-8bfe65229ca2",
         "5f0fd678-9efe-4b31-a447-6bee953f7919",
-        "44b6bc29-8c41-478c-9dc7-d26500dba3e9"
+        "44b6bc29-8c41-478c-9dc7-d26500dba3e9",
         "f76d2317-078a-46fa-aa45-3e8cf1b41ccc",
         "e28af016-c2c9-4e01-abe6-be72275d407f",
         "d1f3cc97-905f-4c48-9532-ce1003177d42",
