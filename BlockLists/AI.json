@@ -1,5 +1,5 @@
 {
-    "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AIArt.json",
+    "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AI.json",
     "Worlds": [
         {
             "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
@@ -273,6 +273,10 @@
                     "Behavior": "delete"
                 }
             ]
+        },
+        {
+            "Id": "9b348c38-797f-474a-bb1f-4739a3593cbe",
+            "Skybox": "Black"
         }
     ],
     "Avatars": [
@@ -350,6 +354,9 @@
         "0f7d0c6f-53b2-4209-aeee-65f74b2a780c",
         "930cc4cc-099b-4d36-93c1-76243b2d4199",
         "fea9bfc6-8adf-4283-8648-9e534e5ada1c",
-        "241d7872-c2db-44be-b6ab-ea2bd32ecbce"
+        "241d7872-c2db-44be-b6ab-ea2bd32ecbce",
+        "12d36408-ca41-45ff-9f69-0794a30d0b60",
+        "5c57b1e9-6dd0-40bc-a8f6-d366ae8c7cc8",
+        "cbca73a7-3864-469a-b4a3-9d38fe62e6fc"
     ]
 }

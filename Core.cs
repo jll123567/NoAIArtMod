@@ -48,6 +48,40 @@ namespace NoAIArt
                         if (MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
                         {
                             MelonLogger.Msg(System.Drawing.Color.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            if(blockedWorld.Skybox != "Untouched")
+                            {
+                                Material skyboxReplacement;
+                                switch (blockedWorld.Skybox)
+                                {
+                                    case "None":
+                                        RenderSettings.skybox = null;
+                                        break;
+                                    case "Black":
+                                        skyboxReplacement = new Material(Shader.Find("Skybox/Cubemap"));
+                                        skyboxReplacement.SetColor("_Tint", new Color(0.05f, 0.05f, 0.05f, 1f));
+                                        RenderSettings.skybox = skyboxReplacement;
+                                        break;
+                                    case "Gray":
+                                        skyboxReplacement = new Material(Shader.Find("Skybox/Cubemap"));
+                                        skyboxReplacement.SetColor("_Tint", Color.gray);
+                                        RenderSettings.skybox = skyboxReplacement;
+                                        break;
+                                    case "White":
+                                        skyboxReplacement = new Material(Shader.Find("Skybox/Cubemap"));
+                                        skyboxReplacement.SetColor("_Tint", new Color(0.9f, 0.9f, 0.9f, 1f));
+                                        RenderSettings.skybox = skyboxReplacement;
+                                        break;
+                                    case "DarkBlue":
+                                        skyboxReplacement = new Material(Shader.Find("Skybox/Cubemap"));
+                                        skyboxReplacement.SetColor("_Tint", new Color(0.192f, 0.306f, 0.478f, 1f));
+                                        RenderSettings.skybox = skyboxReplacement;
+                                        break;
+                                    default:
+                                        skyboxReplacement = new Material(Shader.Find("Skybox/Procedural"));
+                                        RenderSettings.skybox = skyboxReplacement;
+                                        break;
+                                }
+                            }
                             foreach (BlockedWorldObject blockedObject in blockedWorld.Objects)
                             {
                                 FindBlockedWorldObject(blockedObject);
@@ -56,10 +90,10 @@ namespace NoAIArt
                     }
                 }
             }
-            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Alpha0))
-            {
-                DisplayObjects();
-            }
+            //if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Alpha0))
+            //{
+            //    DisplayObjects();
+            //}
         }
 
         internal static void LoadBlocklists()
@@ -401,6 +435,7 @@ namespace NoAIArt
         {
             public string Id { get; set; } = "";
             public List<BlockedWorldObject> Objects = new List<BlockedWorldObject>();
+            public string Skybox { get; set; } = "Untouched";
 
         }
         

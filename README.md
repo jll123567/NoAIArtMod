@@ -19,11 +19,11 @@ Basically: it must be a `raw.githubusercontent.com` link that ends with `.json`.
 
 Props and Avatars are just lists of the prop/avatar GUIDs that you want to block.
 
-A World is an object with an `Id`(The world's GUID) and a list of `Objects`.
+A World is an object with an `Id`(The world's GUID), A `Skybox` property, and a list of `Objects`.
 Each object needs either a `Name`(Name of game object) or an `Index`(Index of game object at its level in the hierarchy) .
 Each object can have a list a `Children` objects to build out the heirarchy.
 Each object can also have a `Behavior` that specifies what the mod should do with the object
-Check [This](https://github.com/jll123567/NoAIArtMod/blob/main/BlockLists/JillsBlockList.json) blocklist for an example.
+Check [This](https://github.com/jll123567/NoAIArtMod/blob/main/BlockLists/AIList.json) blocklist for an example.
 
 There are four available `Behavior`s:
 
@@ -31,6 +31,16 @@ There are four available `Behavior`s:
  - `delete`: Destroy this object (and it's children).
  - `no-render`: Destory this object's `MeshRenderer`s and `SkinnedMeshRenderer`s.
  - `change-material`: Change the materials of this object to the Default Standard material.
+
+The `Skybox` property allows you to replace the skybox using the following options:
+
+- `Untouched`: Do not change the skybox, the default if you don't specify a skybox change.
+- `None`: Set the skybox to null, I.E. make it full black.
+- `White`: An almost white.
+- `Gray`: A middle gray.
+- `Black`: An almost black.
+- `DarkBlue`: The unity default blue when you don't specify a skybox.
+- `Default`(or any name not used above): The default unity procedural skybox.
 
 ## Building
 1. Clone this repo.
