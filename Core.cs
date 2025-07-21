@@ -11,9 +11,9 @@ using UnityEngine.SceneManagement;
 using ABI.CCK.Components;
 using ABI_RC.Core.Savior;
 using Newtonsoft.Json;
-using Aura2API;
 using ABI_RC.Core.Player;
 using RTG;
+
 
 
 
@@ -184,7 +184,7 @@ namespace NoAIArt
                 else {  // Get object by name.
                     foreach (GameObject g in SceneManager.GetActiveScene().GetRootGameObjects())  // GameObject.Find is too broad and Transform.Find needs a transform to start with.
                     {
-                        if(g.name == objectSpec.Name)
+                        if (g.name == objectSpec.Name)
                         {
                             failed = false;
                             RemoveBlockedWorldObject(objectSpec, g);
@@ -257,7 +257,7 @@ namespace NoAIArt
         {
             if (objectSpec.Behavior == "delete")
             {
-                current.Destroy(); // Delete the current game object. NOT PARSING CHILDREN!!!
+                UnityEngine.Object.Destroy(current); // Delete the current game object. NOT PARSING CHILDREN!!!
             }
             else  // Other options require parsing spec children.
             {
@@ -265,11 +265,11 @@ namespace NoAIArt
                 {
                     foreach (MeshRenderer m in current.GetComponents<MeshRenderer>())
                     {
-                        m.Destroy();
+                        UnityEngine.Object.Destroy(m);
                     }
                     foreach (SkinnedMeshRenderer sm in current.GetComponents<SkinnedMeshRenderer>())
                     {
-                        sm.Destroy();
+                        UnityEngine.Object.Destroy(sm);
                     }
                 }
                 else if (objectSpec.Behavior == "change-material")  // Change mesh renderer materials.

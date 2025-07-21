@@ -277,10 +277,68 @@
         {
             "Id": "9b348c38-797f-474a-bb1f-4739a3593cbe",
             "Skybox": "Black"
+        },
+        {
+            "Id": "7dc584f3-8f41-49fa-b1d3-b28696736ccf",
+            "Skybox": "DarkBlue",
+            "Objects": [
+                {
+                    "Index": 0,
+                    "Children": [
+                        {
+                            "Index": 0,
+                            "Children": [
+                                {
+                                    "Index": 0,
+                                    "Children": [
+                                        {
+                                            "Index": 0,
+                                            "Children": [
+                                                {
+                                                    "Index": 0,
+                                                    "Children": [
+                                                        {
+                                                            "Index": 0,
+                                                            "Children": [
+                                                                {
+                                                                    "IndexRange": [ 0, 2 ],
+                                                                    "Behavior": "delete"
+                                                                },
+                                                                {
+                                                                    "Index": 3,
+                                                                    "Children": [
+                                                                        {
+                                                                            "Index": 2,
+                                                                            "Children": [
+                                                                                {
+                                                                                    "Index": 0,
+                                                                                    "Behavior": "delete"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Index": 2,
+                                    "Behavior": "delete"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "Avatars": [
-        "696d2ab2-b08e-4e75-b9af-81fea22217a4", 
+        "696d2ab2-b08e-4e75-b9af-81fea22217a4",
         "32e767e4-dd9f-421e-b899-d32254c8172c",
         "02a77286-5877-478a-896b-e1d367af3dea",
         "468d87ec-b0d6-4367-b569-42c3dba04898"

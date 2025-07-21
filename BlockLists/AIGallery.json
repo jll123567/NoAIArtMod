@@ -143,6 +143,32 @@
                     ]
                 }
             ]
+        },
+        {
+            "Id": "d6803375-587c-49af-bf64-eff549a7b630",
+            "Objects": [
+                {
+                    "Index": 2,
+                    "Children": [
+                        {
+                            "Index": 0,
+                            "Behavior": "delete"
+                        },
+                        {
+                            "Index": 3,
+                            "Behavior": "delete"
+                        },
+                        {
+                            "Index": 4,
+                            "Behavior": "delete"
+                        },
+                        {
+                            "Index": 5,
+                            "Behavior": "delete"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
