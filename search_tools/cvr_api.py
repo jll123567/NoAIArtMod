@@ -2,6 +2,7 @@ import requests
 import json
 import sys
 import os
+import datetime
 
 APIAddress = "https://api.abinteractive.net/1"
 headers = {
@@ -37,7 +38,7 @@ def get_user_public_uploads(uid):
     }
 
 
-def get_search_restults(term):
+def get_search_results(term):
     request = requests.get(f"{APIAddress}/search/{term}", headers=headers).json()["data"]
 
     return {
@@ -52,14 +53,32 @@ def get_world(wid):
     return request
 
 
-def get_avatar_description(aid):
+def get_avatar(aid):
     request = requests.get(f"{APIAddress}/avatars/{aid}", headers=headers).json()["data"]
-    return request["description"]
+    return request
 
 
-def get_prop_description(pid):
+def get_prop(pid):
     request = requests.get(f"{APIAddress}/spawnables/{pid}", headers=headers).json()["data"]
-    return request["description"]
+    return request
+
+def filter_older_than(dt, items):
+    for world_idx in reversed(range(len(items["worlds"]))):
+        world_details = get_world(items["worlds"][world_idx]["id"])
+        updated = datetime.datetime.strptime(world_details["updatedAt"], "%Y-%m-%dT%H:%M:%S")
+        if updated < dt:
+            items["worlds"].pop(world_idx)
+    for avatar_idx in reversed(range(len(items["avatars"]))):
+        avatar_details = get_avatar(items["avatars"][avatar_idx]["id"])
+        updated = datetime.datetime.strptime(avatar_details["updatedAt"], "%Y-%m-%dT%H:%M:%S")
+        if updated < dt:
+            items["avatars"].pop(avatar_idx)
+    for prop_idx in reversed(range(len(items["props"]))):
+        prop_details = get_prop(items["props"][prop_idx]["id"])
+        updated = datetime.datetime.strptime(prop_details["updatedAt"], "%Y-%m-%dT%H:%M:%S")
+        if updated < dt:
+            items["props"].pop(prop_idx)
+    return items
 
 
 def filter_already_blocked(items):
@@ -95,12 +114,12 @@ def generate_user_uploads_results(items):
     world_html = f"    <ul>\n{world_html}</ul>\n"
     avatar_html = ""
     for avatar in items["avatars"]:
-        desc = get_avatar_description(avatar['id'])
+        desc = get_avatar(avatar['id'])["description"]
         avatar_html += f"      <hr><ul><li>id: {avatar['id']}</li><li>name: {avatar['name']}</li><li><img src=\"{avatar['imageUrl']}\"></li><li>{desc}</li></ul>\n"
     avatar_html = f"    <ul>\n{avatar_html}</ul>\n"
     prop_html = ""
     for prop in items["props"]:
-        desc = get_prop_description(prop['id'])
+        desc = get_prop(prop['id'])["description"]
         prop_html += f"      <hr><ul><li>id: {prop['id']}</li><li>name: {prop['name']}</li><li><img src=\"{prop['imageUrl']}\"></li><li>{desc}</li></ul>\n"
     prop_html = f"    <ul>\n{prop_html}</ul>\n"
     full_page = f"<!DOCTYPE html>\n<html>\n  <body>\n    <h2>Worlds</h2>\n{world_html}    <h2>Avatars</h2>\n{avatar_html}    <h2>Props</h2>\n{prop_html}  </body>\n</html>"
@@ -110,8 +129,13 @@ def generate_user_uploads_results(items):
 
 if __name__ == "__main__":
     """Fill in the blanks and run."""
+    print("Auth")
     authenticate()  # Put an email and password on separate lines for this in ./login
-    # items = get_user_public_uploads("")
-    items = get_search_restults(" AI ")
+    print("Get items")
+    # items = get_search_results(" AI ")
+    items = get_user_public_uploads("")
+    print("Filter items")
+    items = filter_older_than(datetime.datetime.now() - datetime.timedelta(days=90), items)
     items = filter_already_blocked(items)
+    print("Create results")
     generate_user_uploads_results(items)
