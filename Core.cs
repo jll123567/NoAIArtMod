@@ -534,6 +534,7 @@ namespace NoAIArt
             public List<BlockedWorld> Worlds = new List<BlockedWorld>();
             public List<string> Avatars = new List<string>();
             public List<string> Props = new List<string>();
+            public string Comment { get; } = "";
             public string UpdateURL { get; set; } = "";
         }
 

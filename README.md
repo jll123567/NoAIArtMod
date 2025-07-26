@@ -19,18 +19,7 @@ Basically: it must be a `raw.githubusercontent.com` link that ends with `.json`.
 
 Props and Avatars are just lists of the prop/avatar GUIDs that you want to block.
 
-A World is an object with an `Id`(The world's GUID), A `Skybox` property, and a list of `Objects`.
-Each object needs either a `Name`(Name of game object) or an `Index`(Index of game object at its level in the hierarchy) .
-Each object can have a list a `Children` objects to build out the heirarchy.
-Each object can also have a `Behavior` that specifies what the mod should do with the object
-Check [This](https://github.com/jll123567/NoAIArtMod/blob/main/BlockLists/AIList.json) blocklist for an example.
-
-There are four available `Behavior`s:
-
- - `nothing`: Do nothing to this object. This is the default if you don't specifiy a behavior.
- - `delete`: Destroy this object (and it's children).
- - `no-render`: Destory this object's `MeshRenderer`s and `SkinnedMeshRenderer`s.
- - `change-material`: Change the materials of this object to the Default Standard material.
+A World is an object with an `Id`(The world's GUID), Possibly a `Skybox` property, and a list of `Objects`.
 
 The `Skybox` property allows you to replace the skybox using the following options:
 
@@ -41,6 +30,31 @@ The `Skybox` property allows you to replace the skybox using the following optio
 - `Black`: An almost black.
 - `DarkBlue`: The unity default blue when you don't specify a skybox.
 - `Default`(or any name not used above): The default unity procedural skybox.
+
+Each object in the world's objects is specified with a `SearchType` and `SearchPattern`.
+The pattern depends on the type, which can be:
+
+- `Name`: Name of the game object.
+- `Index`: Integer index (as a string) of the game object.
+- `IndexRange`: String with the starting and ending indexes (inclusive) as well as excluded indicies of objects.
+  - For example: removing objects 2 through 6 but not 3 or 5 would be an index range "2, 6, 3, 5".
+
+The search only works on one level of the hirarchy of the scene at a time, starting at the scene root.
+To remove a child of an object, you have to list the parent objects, then list the child with the `Children` property.
+
+For each object the `Behavior` specifies what the mod should do with the object
+
+There are four available `Behavior`s:
+
+ - `nothing`: Do nothing to this object. This is the default if you don't specifiy a behavior.
+ - `delete`: Destroy this object (and it's children).
+ - `no-render`: Destory this object's `MeshRenderer`s and `SkinnedMeshRenderer`s.
+ - `change-material`: Change the materials of this object to the Default Standard material.
+   - You can specify `MaterialReplacementIndicies` as a list of the materials to replace on the renderer, so you don't replace everything.
+
+Check [This](https://github.com/jll123567/NoAIArtMod/blob/main/BlockLists/AIList.json) blocklist for an example.
+
+
 
 ## Building
 1. Clone this repo.

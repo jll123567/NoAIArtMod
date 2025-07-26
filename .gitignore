@@ -365,6 +365,8 @@ FodyWeavers.xsd
 /References.Items.props
 /NStrip.exe
 
+.idea
+
 # search tools
 search_tools/login
 search_tools/results.html
