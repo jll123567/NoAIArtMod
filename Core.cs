@@ -156,17 +156,48 @@ namespace NoAIArt
             bool failed = true;
             if(parrent is null) // Check root of world scene.
             {
-                if (objectSpec.Index >= 0)  // Get object by index (prefered)
+                if (objectSpec.SearchType.Equals("Index"))  // Get object by index (prefered)
                 {
                     failed = false;
-                    RemoveBlockedWorldObject(objectSpec, SceneManager.GetActiveScene().GetRootGameObjects()[objectSpec.Index]);
+                    int index;                    
+                    bool parse_pass = int.TryParse(objectSpec.SearchPattern, out index);
+                    if (!parse_pass)
+                    {
+                        MelonLogger.Error($"Your int is malformed: {objectSpec.SearchPattern}");
+                        return;
+                    }
+                    RemoveBlockedWorldObject(objectSpec, SceneManager.GetActiveScene().GetRootGameObjects()[index]);
                 }
-                else if (objectSpec.IndexRange.Length == 2)  // Using a range [a,b] possibly with exclusions [e1, ..., en].
+                else if (objectSpec.SearchType.Equals("IndexRange"))  // Using a range [a,b] possibly with exclusions [e1, ..., en].
                 {
-                    for (int i = objectSpec.IndexRange[1]; i >= objectSpec.IndexRange[0]; i--)
+                    // Extract range info from pattern.
+                    String[] rangeInfoS = objectSpec.SearchPattern.Split(',');
+                    bool parsePass;
+                    int rangeMin;
+                    int rangeMax;
+                    int[] rangeExceptions = new int[0];
+
+                    parsePass = int.TryParse(rangeInfoS[0].Trim(), out rangeMin);
+                    if (!parsePass) { MelonLogger.Error($"Bad range minimum: {rangeInfoS[0]}"); return; }
+                    parsePass = int.TryParse(rangeInfoS[1].Trim(), out rangeMax);
+                    if (!parsePass) { MelonLogger.Error($"Bad range maximum: {rangeInfoS[1]}"); return; }
+
+                    if(rangeInfoS.Length > 2)
+                    {
+                        rangeExceptions = new int[rangeInfoS.Length - 2];
+                        for (int i = 2; i < rangeInfoS.Length; i++)
+                        {
+                            parsePass = int.TryParse(rangeInfoS[i].Trim(), out rangeExceptions[i-2]);
+                            if (!parsePass) { MelonLogger.Error($"Bad range execption: {rangeInfoS[i]}"); return; }
+
+                        }
+                    }
+                    
+                    // Parse objects
+                    for (int i = rangeMax; i >= rangeMin; i--)
                     {
                         bool skip = false;
-                        foreach(int e in objectSpec.RangeExclusions)
+                        foreach(int e in rangeExceptions)
                         {
                             if (e == i)
                             {
@@ -181,10 +212,10 @@ namespace NoAIArt
                         }
                     }
                 }
-                else {  // Get object by name.
+                else if (objectSpec.SearchType.Equals("Name")){  // Get object by name.
                     foreach (GameObject g in SceneManager.GetActiveScene().GetRootGameObjects())  // GameObject.Find is too broad and Transform.Find needs a transform to start with.
                     {
-                        if (g.name == objectSpec.Name)
+                        if (g.name == objectSpec.SearchPattern)
                         {
                             failed = false;
                             RemoveBlockedWorldObject(objectSpec, g);
@@ -192,22 +223,57 @@ namespace NoAIArt
                         }
                     } 
                 }
+                else
+                {
+                    MelonLogger.Error($"Search type is invalid: {objectSpec.SearchType}.\n Use either \"Name\", \"Index\", or \"IndexRange\".");
+                    return;
+                }
             }
             else  // Check parrent object.
             {
                 try
                 {
-                    if (objectSpec.Index >= 0) // Get object by index (prefered)
+                    if (objectSpec.SearchType.Equals("Index")) // Get object by index (prefered)
                     {
                         failed = false;
-                        RemoveBlockedWorldObject(objectSpec, parrent.transform.GetChild(objectSpec.Index).gameObject);
+                        int index;
+                        bool parse_pass = int.TryParse(objectSpec.SearchPattern, out index);
+                        if (!parse_pass)
+                        {
+                            MelonLogger.Error($"Your int is malformed: {objectSpec.SearchPattern}");
+                            return;
+                        }
+                        RemoveBlockedWorldObject(objectSpec, parrent.transform.GetChild(index).gameObject);
                     }
-                    else if (objectSpec.IndexRange.Length == 2)  // Using a range [a,b] possibly with exclusions [e1, ..., en].
+                    else if (objectSpec.SearchType.Equals("IndexRange"))  // Using a range [a,b] possibly with exclusions [e1, ..., en].
                     {
-                        for (int i = objectSpec.IndexRange[1]; i >= objectSpec.IndexRange[0]; i--)
+                        // Extract range info from pattern.
+                        String[] rangeInfoS = objectSpec.SearchPattern.Split(',');
+                        bool parsePass;
+                        int rangeMin;
+                        int rangeMax;
+                        int[] rangeExceptions = new int[0];
+
+                        parsePass = int.TryParse(rangeInfoS[0].Trim(), out rangeMin);
+                        if (!parsePass) { MelonLogger.Error($"Bad range minimum: {rangeInfoS[0]}"); return; }
+                        parsePass = int.TryParse(rangeInfoS[1].Trim(), out rangeMax);
+                        if (!parsePass) { MelonLogger.Error($"Bad range maximum: {rangeInfoS[1]}"); return; }
+
+                        if (rangeInfoS.Length > 2)
+                        {
+                            rangeExceptions = new int[rangeInfoS.Length - 2];
+                            for (int i = 2; i < rangeInfoS.Length; i++)
+                            {
+                                parsePass = int.TryParse(rangeInfoS[i].Trim(), out rangeExceptions[i - 2]);
+                                if (!parsePass) { MelonLogger.Error($"Bad range excpetion: {rangeInfoS[i]}"); return; }
+
+                            }
+                        }
+
+                        for (int i = rangeMax; i >= rangeMin; i--)
                         {
                             bool skip = false;
-                            foreach (int e in objectSpec.RangeExclusions)
+                            foreach (int e in rangeExceptions)
                             {
                                 if (e == i)
                                 {
@@ -232,15 +298,21 @@ namespace NoAIArt
                             }
                         }
                     }
-                    else
+                    else if (objectSpec.SearchType.Equals("Name")) // Get object by name.
                     {
-                        GameObject result = parrent.transform.Find(objectSpec.Name).gameObject;
+                        GameObject result = parrent.transform.Find(objectSpec.SearchPattern).gameObject;
                         if (result != null)
                         {
                             failed = false;
                             RemoveBlockedWorldObject(objectSpec, result);  // Find will only check current level. (unless object has a / in name. Hopefully world creator was not insane!)
                         }
                     }
+                    else
+                    {
+                        MelonLogger.Error($"Search type is invalid: {objectSpec.SearchType}.\n Use either \"Name\", \"Index\", or \"IndexRange\".");
+                        return;
+                    }
+
                 }
                 catch(Exception e)
                 {
@@ -249,7 +321,7 @@ namespace NoAIArt
             }
             if(failed)
             {
-                MelonLogger.Error($"Could not find object. Name:{objectSpec.Name}, Index:{objectSpec.Index}, IndexRange: {objectSpec.IndexRange.Length == 2}, Parrent: {parrent?.name}");
+                MelonLogger.Error($"Could not find object. SearchType:{objectSpec.SearchType}, SearchPattern:{objectSpec.SearchPattern}, Parrent: {parrent?.name}");
             }
         }
 
@@ -469,16 +541,16 @@ namespace NoAIArt
         {
             public string Id { get; set; } = "";
             public List<BlockedWorldObject> Objects = new List<BlockedWorldObject>();
+            public string Name { get; set; } = ""; // Optional to give the name of the world.
             public string Skybox { get; set; } = "Untouched";
 
         }
         
         internal class BlockedWorldObject
         {
-            public string Name { get; set; } = "";
-            public int Index { get; set; } = -1;
-            public int[] IndexRange { get; set; } = new int[0];
-            public int[] RangeExclusions { get; set; } = new int[0];
+            public string SearchType { get; set; } = "";  // Name, Index, IndexRange
+            public string SearchPattern { get; set; } = ""; // The name, an int (index), a list of comma seperated ints.
+            public string Name { get; set; } = "";  // Just for commenting lol.
             public int[] MaterialReplacementIndicies { get; set; } = new int[0];
             public float[] MoveVector { get; set; } = new float[3];
             public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
