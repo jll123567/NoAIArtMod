@@ -47,9 +47,9 @@ def get_search_restults(term):
     }
 
 
-def get_world_description(wid):
+def get_world(wid):
     request = requests.get(f"{APIAddress}/worlds/{wid}", headers=headers).json()["data"]
-    return request["description"]
+    return request
 
 
 def get_avatar_description(aid):
@@ -90,7 +90,7 @@ def filter_already_blocked(items):
 def generate_user_uploads_results(items):
     world_html = ""
     for world in items["worlds"]:
-        desc = get_world_description(world['id'])
+        desc = get_world(world['id'])["description"]
         world_html += f"      <hr><ul><li>id: {world['id']}</li><li>name: {world['name']}</li><li><img src=\"{world['imageUrl']}\"></li><li>{desc}</li></ul>\n"
     world_html = f"    <ul>\n{world_html}</ul>\n"
     avatar_html = ""
