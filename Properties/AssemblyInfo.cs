@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(NoAIArt.Core), "NoAIArt", "0.0.1", "JillTheSomething", "https://github.com/jll123567/NoAIArt/releases")]
-[assembly: MelonGame("Alpha Blend Interactive", "ChilloutVR")]
+[assembly: MelonInfo(typeof(NoAIArt.Core), "NoAIArt", "1.4.0", "JillTheSomething", "https://github.com/jll123567/NoAIArt/releases")]
+[assembly: MelonGame("ChilloutVR", "ChilloutVR")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.MONO)]
 //[assembly: MelonAdditionalDependencies("BTKUILib")]

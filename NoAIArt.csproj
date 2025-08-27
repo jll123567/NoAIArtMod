@@ -15,9 +15,6 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>.ManagedLibs\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Aura2_Core">
-      <HintPath>.ManagedLibs\Aura2_Core.dll</HintPath>
-    </Reference>
     <Reference Include="AVProVideo.Extensions.Timeline">
       <HintPath>.ManagedLibs\AVProVideo.Extensions.Timeline.dll</HintPath>
     </Reference>

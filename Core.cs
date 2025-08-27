@@ -47,7 +47,7 @@ namespace NoAIArt
                     {
                         if (MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
                         {
-                            MelonLogger.Msg(System.Drawing.Color.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
                             if(blockedWorld.Skybox != "Untouched")
                             {
                                 Material skyboxReplacement;
@@ -90,10 +90,10 @@ namespace NoAIArt
                     }
                 }
             }
-            //if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Alpha0))
-            //{
-            //    DisplayObjects();
-            //}
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                DisplayObjects();
+            }
         }
 
         internal static void LoadBlocklists()
@@ -390,18 +390,18 @@ namespace NoAIArt
 
         internal void DisplayObjects()
         {
-            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "===============Dumping world/avatar/prop ids==============");
+            MelonLogger.Msg(System.ConsoleColor.Green, "===============Dumping world/avatar/prop ids==============");
 
-            MelonLogger.Msg(System.Drawing.Color.GreenYellow, $"World: {MetaPort.Instance.CurrentWorldId}");
-            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "                      Avatars");
-            MelonLogger.Msg(System.Drawing.Color.YellowGreen, $"You are using {PlayerSetup.Instance._avatar.GetComponent<CVRAssetInfo>().objectId}");
+            MelonLogger.Msg(System.ConsoleColor.Green, $"World: {MetaPort.Instance.CurrentWorldId}");
+            MelonLogger.Msg(System.ConsoleColor.Green, "                      Avatars");
+            //MelonLogger.Msg(System.Drawing.Color.YellowGreen, $"You are using {PlayerSetup.Instance._avatcar.GetComponent<CVRAssetInfo>().objectId}");
             foreach (CVRPlayerEntity playerEntity in CVRPlayerManager.Instance.NetworkPlayers)
             {
-                MelonLogger.Msg(System.Drawing.Color.GreenYellow, $"{playerEntity.Username} using {playerEntity.AvatarId}");
+                MelonLogger.Msg(System.ConsoleColor.Green, $"{playerEntity.Username} using {playerEntity.ContentMetadata.AssetId}");
             }
             
 
-            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "                       Props");
+            MelonLogger.Msg(System.ConsoleColor.Green, "                       Props");
             foreach (GameObject potentialProp in SceneManager.GetSceneAt(1).GetRootGameObjects())
             {
                 if (potentialProp.name.StartsWith("p"))
@@ -409,11 +409,11 @@ namespace NoAIArt
                     GameObject prop = potentialProp.GetAllChildren()[0];
                     string propId = prop.GetComponent<CVRAssetInfo>().objectId;
                     float distance = Vector3.Distance(prop.transform.position, PlayerSetup.Instance.GetHipBone().position);
-                    MelonLogger.Msg(System.Drawing.Color.GreenYellow, $"Prop {propId}: {distance}m");
+                    MelonLogger.Msg(System.ConsoleColor.Green, $"Prop {propId}: {distance}m");
 
                 }
             }
-            MelonLogger.Msg(System.Drawing.Color.GreenYellow, "====================================================");
+            MelonLogger.Msg(System.ConsoleColor.Green, "====================================================");
         }
 
         [HarmonyPatch]
@@ -429,7 +429,7 @@ namespace NoAIArt
                     {
                         if(MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
                         {
-                            MelonLogger.Msg(System.Drawing.Color.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
                             if (blockedWorld.Skybox != "Untouched")
                             {
                                 Material skyboxReplacement;
@@ -491,7 +491,7 @@ namespace NoAIArt
                     {
                         if(propGUID == blockedPropId)
                         {
-                            MelonLogger.Msg(System.Drawing.Color.Red, $"Prop in block list, blocking: {propGUID}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"Prop in block list, blocking: {propGUID}");
                             wasForceHidden = true;
                             return false;
                         }
@@ -518,7 +518,7 @@ namespace NoAIArt
                         
                         if (avatarGUID == blockedAvatarId && !SeenBadAvis.Contains(avatarGUID))
                         {
-                            MelonLogger.Msg(System.Drawing.Color.Red, $"Avatar in block list, blocking: {avatarGUID}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"Avatar in block list, blocking: {avatarGUID}");
                             wasForceHidden = true;
                             SeenBadAvis.Add(avatarGUID);
                             return false;
