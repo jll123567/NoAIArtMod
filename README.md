@@ -52,7 +52,7 @@ There are four available `Behavior`s:
  - `change-material`: Change the materials of this object to the Default Standard material.
    - You can specify `MaterialReplacementIndicies` as a list of the materials to replace on the renderer, so you don't replace everything.
 
-Check [This](https://github.com/jll123567/NoAIArtMod/blob/main/BlockLists/AIList.json) blocklist for an example.
+Check [This](https://github.com/jll123567/NoAIArtMod/blob/main/BlockLists/AI.json) blocklist for an example.
 
 
 
