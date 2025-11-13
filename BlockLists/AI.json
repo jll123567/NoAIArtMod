@@ -197,6 +197,7 @@
         },
         {
             "Id": "0537ad3f-ca8a-43a9-b38b-41c25e1d7157",
+            "Name": "2020 halloween world",
             "Objects": [
                 {
                     "SearchType": "Index",
@@ -316,6 +317,7 @@
         },
         {
             "Id": "fc84ea71-649c-4111-9fd5-e4ecfb926b93",
+            "Name": "Tron Legacy Portal",
             "Objects": [
                 {
                     "SearchType": "Index",
@@ -332,6 +334,7 @@
         },
         {
             "Id": "a65b61a6-4d68-4850-be8d-abcdfbfb4081",
+            "Name": "Winter 2019",
             "Objects": [
                 {
                     "SearchType": "Index",
@@ -365,6 +368,7 @@
         },
         {
             "Id": "514bfe07-04b9-41b8-9eec-10d85e0a36ed",
+            "Name": "The Old Ruins",
             "Objects": [
                 {
                     "SearchType": "Index",
@@ -381,6 +385,7 @@
         },
         {
             "Id": "47732aff-696d-4e0b-8767-29f13d2665ba",
+            "Name": "A world from a forgotten time....",
             "Objects": [
                 {
                     "SearchType": "Index",
