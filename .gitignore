@@ -370,3 +370,4 @@ FodyWeavers.xsd
 # search tools
 search_tools/login
 search_tools/results.html
+search_tools/usual_suspects.txt

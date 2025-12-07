@@ -132,10 +132,10 @@ if __name__ == "__main__":
     print("Auth")
     authenticate()  # Put an email and password on separate lines for this in ./login
     print("Get items")
-    # items = get_search_results(" AI ")
-    items = get_user_public_uploads("")
+    items = get_search_results(" AI ")
+    # items = get_user_public_uploads("")
     print("Filter items")
-    items = filter_older_than(datetime.datetime.now() - datetime.timedelta(days=90), items)
+    # items = filter_older_than(datetime.datetime.strptime("", "%m/%d/%Y"), items)
     items = filter_already_blocked(items)
     print("Create results")
     generate_user_uploads_results(items)

@@ -1,29 +1,33 @@
 {
-    "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/UprootFix.json",
-    "Worlds": [
+  "UpdateURL":"https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/UprootFix.json",
+  "Worlds":[
+    {
+      "Id":"fc952f53-82b4-45b3-b706-a89aafa5c84e",
+      "Objects":[
         {
-            "Id": "fc952f53-82b4-45b3-b706-a89aafa5c84e",
-            "Objects": [
-                {
-                    "Children": [
-                        {
-                            "Behavior": "move",
-                            "MoveVector": [
-                                -0.01,
-                                0,
-                                0
-                            ],
-                            "SearchType": "Name",
-                            "SearchPattern": "Menu"
-                        }
-                    ],
-                    "SearchType": "Name",
-                    "SearchPattern": "New Menu"
-                }
-            ],
-            "Name": "Uproot"
+          "Children":[
+            {
+              "Behavior":"move",
+              "MoveVector":[
+                -0.01,
+                0,
+                0
+              ],
+              "SearchType":"Name",
+              "SearchPattern":"Menu"
+            }
+          ],
+          "SearchType":"Name",
+          "SearchPattern":"New Menu"
         }
-    ],
-    "Avatars": [],
-    "Props": []
+      ],
+      "Name":"Uproot"
+    }
+  ],
+  "Avatars":[
+
+  ],
+  "Props":[
+
+  ]
 }

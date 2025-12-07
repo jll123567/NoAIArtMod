@@ -1,498 +1,541 @@
 {
-    "UpdateURL": "https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AI.json",
-    "Worlds": [
+  "UpdateURL":"https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AI.json",
+  "Worlds":[
+    {
+      "Id":"a24764d7-6c75-4057-9f29-f2ea947db77a",
+      "Objects":[
         {
-            "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
-            "Objects": [
+          "Children":[
+            {
+              "Children":[
                 {
-                    "Children": [
-                        {
-                            "Children": [
-                                {
-                                    "Children": [
-                                        {
-                                            "Behavior": "delete",
-                                            "SearchType": "IndexRange",
-                                            "SearchPattern": "1, 12"
-                                        }
-                                    ],
-                                    "SearchType": "Name",
-                                    "SearchPattern": "friends"
-                                }
-                            ],
-                            "SearchType": "Name",
-                            "SearchPattern": "ads"
-                        }
-                    ],
-                    "SearchType": "Name",
-                    "SearchPattern": "world"
+                  "Children":[
+                    {
+                      "Behavior":"delete",
+                      "SearchType":"IndexRange",
+                      "SearchPattern":"1, 12"
+                    }
+                  ],
+                  "SearchType":"Name",
+                  "SearchPattern":"friends"
                 }
-            ],
-            "Name": "Gravity Club"
-        },
-        {
-            "Id": "4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
-            "Objects": [
-                {
-                    "Children": [
-                        {
-                            "Behavior": "delete",
-                            "SearchType": "Name",
-                            "SearchPattern": "SM_Poster1"
-                        },
-                        {
-                            "Behavior": "delete",
-                            "SearchType": "Name",
-                            "SearchPattern": "SM_Poster2"
-                        }
-                    ],
-                    "SearchType": "Name",
-                    "SearchPattern": "nightclub"
-                }
-            ],
-            "Name": "Astro Cafe"
-        },
-        {
-            "Id": "16fddf0c-a949-4058-96d3-2233f4ea69d6",
-            "Objects": [
-                {
-                    "Children": [
-                        {
-                            "Children": [
-                                {
-                                    "Behavior": "change-material",
-                                    "MaterialReplacementIndicies": [
-                                        2
-                                    ],
-                                    "SearchType": "IndexRange",
-                                    "SearchPattern": "13, 15"
-                                },
-                                {
-                                    "Behavior": "change-material",
-                                    "MaterialReplacementIndicies": [
-                                        2
-                                    ],
-                                    "SearchType": "Index",
-                                    "SearchPattern": "20"
-                                },
-                                {
-                                    "Behavior": "change-material",
-                                    "MaterialReplacementIndicies": [
-                                        2
-                                    ],
-                                    "SearchType": "Index",
-                                    "SearchPattern": "21"
-                                }
-                            ],
-                            "SearchType": "Name",
-                            "SearchPattern": "eepy"
-                        }
-                    ],
-                    "SearchType": "Name",
-                    "SearchPattern": "Main Room"
-                }
-            ],
-            "Name": "Eepy"
-        },
-        {
-            "Id": "76a714a6-1aa4-48e9-9ff5-c79d0278eb7b",
-            "Objects": [
-                {
-                    "Behavior": "delete",
-                    "SearchType": "Name",
-                    "SearchPattern": "SM_Prop_Picture_01 (4)"
-                },
-                {
-                    "Behavior": "delete",
-                    "SearchType": "Name",
-                    "SearchPattern": "SM_Prop_Picture_01 (5)"
-                },
-                {
-                    "Behavior": "delete",
-                    "SearchType": "Name",
-                    "SearchPattern": "SM_Prop_Picture_01 (6)"
-                },
-                {
-                    "Behavior": "delete",
-                    "SearchType": "Name",
-                    "SearchPattern": "SM_Prop_Picture_01 (7)"
-                }
-            ],
-            "Name": "CVR-OPOLY"
-        },
-        {
-            "Id": "9b348c38-797f-474a-bb1f-4739a3593cbe",
-            "Skybox": "Black",
-            "Name": "The Rectifier (Tron Legacy)"
-        },
-        {
-            "Id": "7dc584f3-8f41-49fa-b1d3-b28696736ccf",
-            "Skybox": "DarkBlue",
-            "Objects": [
-                {
-                    "Children": [
-                        {
-                            "Children": [
-                                {
-                                    "Children": [
-                                        {
-                                            "Children": [
-                                                {
-                                                    "Children": [
-                                                        {
-                                                            "Children": [
-                                                                {
-                                                                    "Behavior": "delete",
-                                                                    "SearchType": "IndexRange",
-                                                                    "SearchPattern": "0, 2"
-                                                                },
-                                                                {
-                                                                    "Children": [
-                                                                        {
-                                                                            "Children": [
-                                                                                {
-                                                                                    "Behavior": "delete",
-                                                                                    "SearchType": "Index",
-                                                                                    "SearchPattern": "0"
-                                                                                }
-                                                                            ],
-                                                                            "SearchType": "Index",
-                                                                            "SearchPattern": "2"
-                                                                        }
-                                                                    ],
-                                                                    "SearchType": "Index",
-                                                                    "SearchPattern": "3"
-                                                                }
-                                                            ],
-                                                            "SearchType": "Index",
-                                                            "SearchPattern": "0"
-                                                        }
-                                                    ],
-                                                    "SearchType": "Index",
-                                                    "SearchPattern": "0"
-                                                }
-                                            ],
-                                            "SearchType": "Index",
-                                            "SearchPattern": "0"
-                                        }
-                                    ],
-                                    "SearchType": "Index",
-                                    "SearchPattern": "0"
-                                },
-                                {
-                                    "Behavior": "delete",
-                                    "SearchType": "Index",
-                                    "SearchPattern": "2"
-                                }
-                            ],
-                            "SearchType": "Index",
-                            "SearchPattern": "0"
-                        }
-                    ],
-                    "SearchType": "Index",
-                    "SearchPattern": "0"
-                }
-            ],
-            "Name": "Ded Haven"
-        },
-        {
-            "Id": "0537ad3f-ca8a-43a9-b38b-41c25e1d7157",
-            "Name": "2020 halloween world",
-            "Objects": [
-                {
-                    "SearchType": "Index",
-                    "SearchPattern": "2",
-                    "Children": [
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "48",
-                            "Children": [
-                                {
-                                    "SearchType": "IndexRange",
-                                    "SearchPattern": "0, 6",
-                                    "Behavior": "delete"
-                                },
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "7",
-                                    "Children": [
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "1",
-                                            "Behavior": "delete"
-                                        },
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "2",
-                                            "Behavior": "delete"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "8",
-                                    "Children": [
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "1",
-                                            "Behavior": "delete"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "9",
-                                    "Children": [
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "1",
-                                            "Behavior": "delete"
-                                        },
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "2",
-                                            "Behavior": "delete"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "23",
-                            "Children": [
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "1",
-                                    "Children": [
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "2",
-                                            "Behavior": "delete"
-                                        },
-                                        {
-                                            "SearchType": "Index",
-                                            "SearchPattern": "3",
-                                            "Behavior": "delete"
-                                        }
-                                    ]
-                                }
-
-                            ]
-                        },
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "7",
-                            "Children": [
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "2",
-                                    "Behavior": "delete"
-                                },
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "3",
-                                    "Behavior": "delete"
-                                }
-                            ]
-                        },
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "35",
-                            "Behavior": "delete"
-                        },
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "37",
-                            "Behavior": "delete"
-                        },
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "51",
-                            "Behavior": "delete"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "Id": "fc84ea71-649c-4111-9fd5-e4ecfb926b93",
-            "Name": "Tron Legacy Portal",
-            "Objects": [
-                {
-                    "SearchType": "Index",
-                    "SearchPattern": "1",
-                    "Children": [
-                        {
-                            "SearchType": "IndexRange",
-                            "SearchPattern": "17, 29",
-                            "Behavior": "delete"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "Id": "a65b61a6-4d68-4850-be8d-abcdfbfb4081",
-            "Name": "Winter 2019",
-            "Objects": [
-                {
-                    "SearchType": "Index",
-                    "SearchPattern": "0",
-                    "Children": [
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "14",
-                            "Children": [
-                                {
-                                    "SearchType": "IndexRange",
-                                    "SearchPattern": "0, 4",
-                                    "Behavior": "delete"
-                                },
-                                {
-                                    "SearchType": "Index",
-                                    "SearchPattern": "6",
-                                    "Children": [
-                                        {
-                                            "SearchType": "IndexRange",
-                                            "SearchPattern": "1, 2",
-                                            "Behavior": "delete"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "Id": "514bfe07-04b9-41b8-9eec-10d85e0a36ed",
-            "Name": "The Old Ruins",
-            "Objects": [
-                {
-                    "SearchType": "Index",
-                    "SearchPattern": "0",
-                    "Children": [
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "20",
-                            "Behavior": "delete"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "Id": "47732aff-696d-4e0b-8767-29f13d2665ba",
-            "Name": "A world from a forgotten time....",
-            "Objects": [
-                {
-                    "SearchType": "Index",
-                    "SearchPattern": "3",
-                    "Children": [
-                        {
-                            "SearchType": "Index",
-                            "SearchPattern": "4",
-                            "Children": [
-                                {
-                                    "SearchType": "IndexRange",
-                                    "SearchPattern": "1, 12",
-                                    "Behavior": "delete"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+              ],
+              "SearchType":"Name",
+              "SearchPattern":"ads"
+            }
+          ],
+          "SearchType":"Name",
+          "SearchPattern":"world"
         }
-    ],
-    "Avatars": [
-        "696d2ab2-b08e-4e75-b9af-81fea22217a4",
-        "32e767e4-dd9f-421e-b899-d32254c8172c",
-        "02a77286-5877-478a-896b-e1d367af3dea",
-        "468d87ec-b0d6-4367-b569-42c3dba04898",
-        "bcf693da-e59d-42f5-9632-884b568be999"
-    ],
-    "Props": [
-        "0d02a748-9945-4360-93db-bf5712c78671",
-        "13fa18f6-705b-4c71-b3ee-f53309cc7699",
-        "1f9b8850-d7f3-46fb-ba7b-45c0e61cea67",
-        "2340b2a5-b267-45d7-9176-af0972d5c84f",
-        "27aaf7da-85e4-4f6e-b8e2-8c757bf0e2b8",
-        "29248b8b-543b-4b6e-be62-3c5394d3758a",
-        "3cfaa40a-4cb6-4ef2-ac35-c9b5cbef0515",
-        "56551e3a-d6e8-4850-9c66-7a20546dd3a2",
-        "5661fa63-3390-450e-b8c9-87a37bd68a6d",
-        "6fb61000-901f-4478-9522-c7c01be7d404",
-        "87254519-d60a-4fb3-ad96-0c9df1a2518e",
-        "87d9b6f2-7f29-4260-8089-e268564bccb5",
-        "9f06f03f-ab8b-4019-a373-d6a69cfca91c",
-        "ab959108-dec8-4e1e-b6dc-dd6d3944c04c",
-        "b478004d-8161-4bca-a1e4-eafe10c66d3e",
-        "bb27f77b-21f1-4cf4-b995-a10e2db373ec",
-        "d4936ad0-6d43-49b1-942b-967d1506cb19",
-        "e2f29864-1fc7-4dcc-bdd5-a9bb4f4d6806",
-        "f5e0ee6a-df83-460c-8e95-df89aa9f9b24",
-        "f5e0ee6a-df83-460c-8e95-df89aa9f9b24",
-        "fd00aabb-af4c-4788-b022-dc810fc292fc",
-        "f5bd401b-52dc-40a8-8947-a67512b27da2",
-        "d2770d77-1e57-4e21-8eec-0ae56a841af7",
-        "39b08518-4840-4a8a-a28b-199a1dcebae5",
-        "3bcf3a50-e472-49dd-a6f5-db13a65c3082",
-        "3ee144e5-3c43-4dac-b332-ead99aa81cf4",
-        "48c1c86f-ebbc-48d1-befc-5eae4b010802",
-        "53b44f9e-967c-4b0c-8a0e-976cb748d7de",
-        "58bef8ce-1bc4-4f5a-bfa4-93d2dbf4ab22",
-        "412078a7-0ced-466e-a474-9c940671cb67",
-        "961fafd3-240a-4493-bd16-ce7b5db00024",
-        "99200ae7-20ff-4a90-b835-d8fe47958c73",
-        "bdb15d85-f5ba-46b3-ad54-0acffbdfca31",
-        "27718d91-eb30-4049-bd61-8bfe65229ca2",
-        "5f0fd678-9efe-4b31-a447-6bee953f7919",
-        "44b6bc29-8c41-478c-9dc7-d26500dba3e9",
-        "f76d2317-078a-46fa-aa45-3e8cf1b41ccc",
-        "e28af016-c2c9-4e01-abe6-be72275d407f",
-        "d1f3cc97-905f-4c48-9532-ce1003177d42",
-        "bfd7230d-d95f-47dc-918e-8f56be50d3ac",
-        "b68b562e-bcf8-4098-a978-49579449ae6f",
-        "aaafcb01-4154-43b2-9a6d-82a3d7bf46f2",
-        "a39987e4-8f23-468e-88c5-0186420d1e96",
-        "a0f8968d-a5e2-444f-82f9-c48d01c00166",
-        "a0114b4e-4fdc-41cb-8886-49c935aaedbb",
-        "9d4fbe67-f262-4616-a20f-5fa08af6d040",
-        "797ed935-73a5-46f1-a66c-206ad71566e7",
-        "75063000-a482-41e2-950d-c9af49de1fd3",
-        "7016c93d-6db3-489c-be14-44730759e0b8",
-        "69831d12-ea71-4b74-a7be-eee6050ed016",
-        "330ad3ca-841a-47d6-91ce-ae0166789f0b",
-        "2541f18b-138c-419c-97ce-c0cfca10a90b",
-        "236d81fb-d0a6-43ed-abad-455e6d52e357",
-        "16d36928-c0df-4975-ac71-0cf20df74979",
-        "1048bb71-30de-4bdb-ab37-ad438bf7dad1",
-        "e38fe0b6-45f1-4fee-a662-0b7b2024c84a",
-        "34c6d41a-b13b-4bf9-b6b1-0a30470886f2",
-        "e4e4c1d3-0171-45b1-a6af-a27131b5e0b6",
-        "6f3e9714-ffff-49a0-a800-ec4432d4809c",
-        "dce52034-0dde-4c14-8cb2-36067c7de3e6",
-        "bc708159-ca3d-4f6d-b12a-c747d5185420",
-        "ac0091e5-ba32-4224-8fee-8d70ac25b45b",
-        "61a1ae81-9e5a-4c37-90dd-d3ce1caa5aff",
-        "9b591c4a-e746-4ee5-9e98-fd46e38c4775",
-        "12dd506b-bfc3-42ca-bbef-ba680a1a4b9c",
-        "0f7d0c6f-53b2-4209-aeee-65f74b2a780c",
-        "930cc4cc-099b-4d36-93c1-76243b2d4199",
-        "fea9bfc6-8adf-4283-8648-9e534e5ada1c",
-        "241d7872-c2db-44be-b6ab-ea2bd32ecbce",
-        "12d36408-ca41-45ff-9f69-0794a30d0b60",
-        "5c57b1e9-6dd0-40bc-a8f6-d366ae8c7cc8",
-        "cbca73a7-3864-469a-b4a3-9d38fe62e6fc",
-        "c6cb9de8-1c92-4705-8559-0719714c12e7",
-        "7b644d59-fd7b-4c22-b0ed-545c890a9270",
-        "713c0301-4a0b-4d7b-8517-d52776aa7a48",
-        "5015cbd0-3e15-419e-b9cf-209e800d3c85",
-        "47f4a210-2319-4023-b89d-279dc7513132",
-        "0fac1310-e1a8-488b-b62d-c39ff77e3d2c",
-        "30ee4b36-4124-4a43-acc7-dd0dfd9be8fc"
-    ]
+      ],
+      "Name":"Gravity Club"
+    },
+    {
+      "Id":"4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
+      "Objects":[
+        {
+          "Children":[
+            {
+              "Behavior":"delete",
+              "SearchType":"Name",
+              "SearchPattern":"SM_Poster1"
+            },
+            {
+              "Behavior":"delete",
+              "SearchType":"Name",
+              "SearchPattern":"SM_Poster2"
+            }
+          ],
+          "SearchType":"Name",
+          "SearchPattern":"nightclub"
+        }
+      ],
+      "Name":"Astro Cafe"
+    },
+    {
+      "Id":"16fddf0c-a949-4058-96d3-2233f4ea69d6",
+      "Objects":[
+        {
+          "Children":[
+            {
+              "Children":[
+                {
+                  "Behavior":"change-material",
+                  "MaterialReplacementIndicies":[
+                    2
+                  ],
+                  "SearchType":"IndexRange",
+                  "SearchPattern":"13, 15"
+                },
+                {
+                  "Behavior":"change-material",
+                  "MaterialReplacementIndicies":[
+                    2
+                  ],
+                  "SearchType":"Index",
+                  "SearchPattern":"20"
+                },
+                {
+                  "Behavior":"change-material",
+                  "MaterialReplacementIndicies":[
+                    2
+                  ],
+                  "SearchType":"Index",
+                  "SearchPattern":"21"
+                }
+              ],
+              "SearchType":"Name",
+              "SearchPattern":"eepy"
+            }
+          ],
+          "SearchType":"Name",
+          "SearchPattern":"Main Room"
+        }
+      ],
+      "Name":"Eepy"
+    },
+    {
+      "Id":"76a714a6-1aa4-48e9-9ff5-c79d0278eb7b",
+      "Objects":[
+        {
+          "Behavior":"delete",
+          "SearchType":"Name",
+          "SearchPattern":"SM_Prop_Picture_01 (4)"
+        },
+        {
+          "Behavior":"delete",
+          "SearchType":"Name",
+          "SearchPattern":"SM_Prop_Picture_01 (5)"
+        },
+        {
+          "Behavior":"delete",
+          "SearchType":"Name",
+          "SearchPattern":"SM_Prop_Picture_01 (6)"
+        },
+        {
+          "Behavior":"delete",
+          "SearchType":"Name",
+          "SearchPattern":"SM_Prop_Picture_01 (7)"
+        }
+      ],
+      "Name":"CVR-OPOLY"
+    },
+    {
+      "Id":"9b348c38-797f-474a-bb1f-4739a3593cbe",
+      "Skybox":"Black",
+      "Name":"The Rectifier (Tron Legacy)"
+    },
+    {
+      "Id":"7dc584f3-8f41-49fa-b1d3-b28696736ccf",
+      "Skybox":"DarkBlue",
+      "Objects":[
+        {
+          "Children":[
+            {
+              "Children":[
+                {
+                  "Children":[
+                    {
+                      "Children":[
+                        {
+                          "Children":[
+                            {
+                              "Children":[
+                                {
+                                  "Behavior":"delete",
+                                  "SearchType":"IndexRange",
+                                  "SearchPattern":"0, 2"
+                                },
+                                {
+                                  "Children":[
+                                    {
+                                      "Children":[
+                                        {
+                                          "Behavior":"delete",
+                                          "SearchType":"Index",
+                                          "SearchPattern":"0"
+                                        }
+                                      ],
+                                      "SearchType":"Index",
+                                      "SearchPattern":"2"
+                                    }
+                                  ],
+                                  "SearchType":"Index",
+                                  "SearchPattern":"3"
+                                }
+                              ],
+                              "SearchType":"Index",
+                              "SearchPattern":"0"
+                            }
+                          ],
+                          "SearchType":"Index",
+                          "SearchPattern":"0"
+                        }
+                      ],
+                      "SearchType":"Index",
+                      "SearchPattern":"0"
+                    }
+                  ],
+                  "SearchType":"Index",
+                  "SearchPattern":"0"
+                },
+                {
+                  "Behavior":"delete",
+                  "SearchType":"Index",
+                  "SearchPattern":"2"
+                }
+              ],
+              "SearchType":"Index",
+              "SearchPattern":"0"
+            }
+          ],
+          "SearchType":"Index",
+          "SearchPattern":"0"
+        }
+      ],
+      "Name":"Ded Haven"
+    },
+    {
+      "Id":"0537ad3f-ca8a-43a9-b38b-41c25e1d7157",
+      "Name":"2020 halloween world",
+      "Objects":[
+        {
+          "SearchType":"Index",
+          "SearchPattern":"2",
+          "Children":[
+            {
+              "SearchType":"Index",
+              "SearchPattern":"48",
+              "Children":[
+                {
+                  "SearchType":"IndexRange",
+                  "SearchPattern":"0, 6",
+                  "Behavior":"delete"
+                },
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"7",
+                  "Children":[
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"1",
+                      "Behavior":"delete"
+                    },
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"2",
+                      "Behavior":"delete"
+                    }
+                  ]
+                },
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"8",
+                  "Children":[
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"1",
+                      "Behavior":"delete"
+                    }
+                  ]
+                },
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"9",
+                  "Children":[
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"1",
+                      "Behavior":"delete"
+                    },
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"2",
+                      "Behavior":"delete"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "SearchType":"Index",
+              "SearchPattern":"23",
+              "Children":[
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"1",
+                  "Children":[
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"2",
+                      "Behavior":"delete"
+                    },
+                    {
+                      "SearchType":"Index",
+                      "SearchPattern":"3",
+                      "Behavior":"delete"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "SearchType":"Index",
+              "SearchPattern":"7",
+              "Children":[
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"2",
+                  "Behavior":"delete"
+                },
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"3",
+                  "Behavior":"delete"
+                }
+              ]
+            },
+            {
+              "SearchType":"Index",
+              "SearchPattern":"35",
+              "Behavior":"delete"
+            },
+            {
+              "SearchType":"Index",
+              "SearchPattern":"37",
+              "Behavior":"delete"
+            },
+            {
+              "SearchType":"Index",
+              "SearchPattern":"51",
+              "Behavior":"delete"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id":"fc84ea71-649c-4111-9fd5-e4ecfb926b93",
+      "Name":"Tron Legacy Portal",
+      "Objects":[
+        {
+          "SearchType":"Index",
+          "SearchPattern":"1",
+          "Children":[
+            {
+              "SearchType":"IndexRange",
+              "SearchPattern":"17, 29",
+              "Behavior":"delete"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id":"a65b61a6-4d68-4850-be8d-abcdfbfb4081",
+      "Name":"Winter 2019",
+      "Objects":[
+        {
+          "SearchType":"Index",
+          "SearchPattern":"0",
+          "Children":[
+            {
+              "SearchType":"Index",
+              "SearchPattern":"14",
+              "Children":[
+                {
+                  "SearchType":"IndexRange",
+                  "SearchPattern":"0, 4",
+                  "Behavior":"delete"
+                },
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"6",
+                  "Children":[
+                    {
+                      "SearchType":"IndexRange",
+                      "SearchPattern":"1, 2",
+                      "Behavior":"delete"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id":"514bfe07-04b9-41b8-9eec-10d85e0a36ed",
+      "Name":"The Old Ruins",
+      "Objects":[
+        {
+          "SearchType":"Index",
+          "SearchPattern":"0",
+          "Children":[
+            {
+              "SearchType":"Index",
+              "SearchPattern":"20",
+              "Behavior":"delete"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id":"47732aff-696d-4e0b-8767-29f13d2665ba",
+      "Name":"A world from a forgotten time....",
+      "Objects":[
+        {
+          "SearchType":"Index",
+          "SearchPattern":"3",
+          "Children":[
+            {
+              "SearchType":"Index",
+              "SearchPattern":"4",
+              "Children":[
+                {
+                  "SearchType":"IndexRange",
+                  "SearchPattern":"1, 12",
+                  "Behavior":"delete"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id":"28c32ca0-b967-4fb9-a28e-5d2322c2678a",
+      "Name":"Summer 2020",
+      "Objects":[
+        {
+          "SearchType":"Index",
+          "SearchPattern":"0",
+          "Children":[
+            {
+              "SearchType":"Index",
+              "SearchPattern":"15",
+              "Children":[
+                {
+                  "SearchType":"IndexRange",
+                  "SearchPattern":"1,11,9",
+                  "Behavior":"delete"
+                }
+              ]
+            },
+            {
+              "SearchType":"Index",
+              "SearchPattern":"23",
+              "Children":[
+                {
+                  "SearchType":"Index",
+                  "SearchPattern":"6",
+                  "Children":[
+                    {
+                      "SearchType":"IndexRange",
+                      "SearchPattern":"1,4",
+                      "Behavior":"delete"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Avatars":[
+    "696d2ab2-b08e-4e75-b9af-81fea22217a4",
+    "32e767e4-dd9f-421e-b899-d32254c8172c",
+    "02a77286-5877-478a-896b-e1d367af3dea",
+    "468d87ec-b0d6-4367-b569-42c3dba04898",
+    "bcf693da-e59d-42f5-9632-884b568be999",
+    "c3927376-58d5-4d79-a667-b1e082edce46"
+  ],
+  "Props":[
+    "0d02a748-9945-4360-93db-bf5712c78671",
+    "13fa18f6-705b-4c71-b3ee-f53309cc7699",
+    "1f9b8850-d7f3-46fb-ba7b-45c0e61cea67",
+    "2340b2a5-b267-45d7-9176-af0972d5c84f",
+    "27aaf7da-85e4-4f6e-b8e2-8c757bf0e2b8",
+    "29248b8b-543b-4b6e-be62-3c5394d3758a",
+    "3cfaa40a-4cb6-4ef2-ac35-c9b5cbef0515",
+    "56551e3a-d6e8-4850-9c66-7a20546dd3a2",
+    "5661fa63-3390-450e-b8c9-87a37bd68a6d",
+    "6fb61000-901f-4478-9522-c7c01be7d404",
+    "87254519-d60a-4fb3-ad96-0c9df1a2518e",
+    "87d9b6f2-7f29-4260-8089-e268564bccb5",
+    "9f06f03f-ab8b-4019-a373-d6a69cfca91c",
+    "ab959108-dec8-4e1e-b6dc-dd6d3944c04c",
+    "b478004d-8161-4bca-a1e4-eafe10c66d3e",
+    "bb27f77b-21f1-4cf4-b995-a10e2db373ec",
+    "d4936ad0-6d43-49b1-942b-967d1506cb19",
+    "e2f29864-1fc7-4dcc-bdd5-a9bb4f4d6806",
+    "f5e0ee6a-df83-460c-8e95-df89aa9f9b24",
+    "f5e0ee6a-df83-460c-8e95-df89aa9f9b24",
+    "fd00aabb-af4c-4788-b022-dc810fc292fc",
+    "f5bd401b-52dc-40a8-8947-a67512b27da2",
+    "d2770d77-1e57-4e21-8eec-0ae56a841af7",
+    "39b08518-4840-4a8a-a28b-199a1dcebae5",
+    "3bcf3a50-e472-49dd-a6f5-db13a65c3082",
+    "3ee144e5-3c43-4dac-b332-ead99aa81cf4",
+    "48c1c86f-ebbc-48d1-befc-5eae4b010802",
+    "53b44f9e-967c-4b0c-8a0e-976cb748d7de",
+    "58bef8ce-1bc4-4f5a-bfa4-93d2dbf4ab22",
+    "412078a7-0ced-466e-a474-9c940671cb67",
+    "961fafd3-240a-4493-bd16-ce7b5db00024",
+    "99200ae7-20ff-4a90-b835-d8fe47958c73",
+    "bdb15d85-f5ba-46b3-ad54-0acffbdfca31",
+    "27718d91-eb30-4049-bd61-8bfe65229ca2",
+    "5f0fd678-9efe-4b31-a447-6bee953f7919",
+    "44b6bc29-8c41-478c-9dc7-d26500dba3e9",
+    "f76d2317-078a-46fa-aa45-3e8cf1b41ccc",
+    "e28af016-c2c9-4e01-abe6-be72275d407f",
+    "d1f3cc97-905f-4c48-9532-ce1003177d42",
+    "bfd7230d-d95f-47dc-918e-8f56be50d3ac",
+    "b68b562e-bcf8-4098-a978-49579449ae6f",
+    "aaafcb01-4154-43b2-9a6d-82a3d7bf46f2",
+    "a39987e4-8f23-468e-88c5-0186420d1e96",
+    "a0f8968d-a5e2-444f-82f9-c48d01c00166",
+    "a0114b4e-4fdc-41cb-8886-49c935aaedbb",
+    "9d4fbe67-f262-4616-a20f-5fa08af6d040",
+    "797ed935-73a5-46f1-a66c-206ad71566e7",
+    "75063000-a482-41e2-950d-c9af49de1fd3",
+    "7016c93d-6db3-489c-be14-44730759e0b8",
+    "69831d12-ea71-4b74-a7be-eee6050ed016",
+    "330ad3ca-841a-47d6-91ce-ae0166789f0b",
+    "2541f18b-138c-419c-97ce-c0cfca10a90b",
+    "236d81fb-d0a6-43ed-abad-455e6d52e357",
+    "16d36928-c0df-4975-ac71-0cf20df74979",
+    "1048bb71-30de-4bdb-ab37-ad438bf7dad1",
+    "e38fe0b6-45f1-4fee-a662-0b7b2024c84a",
+    "34c6d41a-b13b-4bf9-b6b1-0a30470886f2",
+    "e4e4c1d3-0171-45b1-a6af-a27131b5e0b6",
+    "6f3e9714-ffff-49a0-a800-ec4432d4809c",
+    "dce52034-0dde-4c14-8cb2-36067c7de3e6",
+    "bc708159-ca3d-4f6d-b12a-c747d5185420",
+    "ac0091e5-ba32-4224-8fee-8d70ac25b45b",
+    "61a1ae81-9e5a-4c37-90dd-d3ce1caa5aff",
+    "9b591c4a-e746-4ee5-9e98-fd46e38c4775",
+    "12dd506b-bfc3-42ca-bbef-ba680a1a4b9c",
+    "0f7d0c6f-53b2-4209-aeee-65f74b2a780c",
+    "930cc4cc-099b-4d36-93c1-76243b2d4199",
+    "fea9bfc6-8adf-4283-8648-9e534e5ada1c",
+    "241d7872-c2db-44be-b6ab-ea2bd32ecbce",
+    "12d36408-ca41-45ff-9f69-0794a30d0b60",
+    "5c57b1e9-6dd0-40bc-a8f6-d366ae8c7cc8",
+    "cbca73a7-3864-469a-b4a3-9d38fe62e6fc",
+    "c6cb9de8-1c92-4705-8559-0719714c12e7",
+    "7b644d59-fd7b-4c22-b0ed-545c890a9270",
+    "713c0301-4a0b-4d7b-8517-d52776aa7a48",
+    "5015cbd0-3e15-419e-b9cf-209e800d3c85",
+    "47f4a210-2319-4023-b89d-279dc7513132",
+    "0fac1310-e1a8-488b-b62d-c39ff77e3d2c",
+    "30ee4b36-4124-4a43-acc7-dd0dfd9be8fc",
+    "c31dd4f8-5e34-4e17-83c9-5e3c0e23e5e4",
+    "2ca9576a-bc54-4e50-b24d-3c36d5c11b57",
+    "9c95a814-57b1-49f8-8644-e0094ecd94e9"
+  ]
 }
