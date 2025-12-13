@@ -1,31 +1,108 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using MelonLoader;
+﻿using ABI.CCK.Components;
+using ABI_RC.Core.Player;
+using ABI_RC.Core.Savior;
+using ABI_RC.Core.Networking.IO.Instancing;
 using HarmonyLib;
+using MelonLoader;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ABI.CCK.Components;
-using ABI_RC.Core.Savior;
-using Newtonsoft.Json;
-using ABI_RC.Core.Player;
-using RTG;
+using static NoAIArt.Core;
+using System.Linq;
 
 
 
 
 namespace NoAIArt
 {
+    /// <summary>
+    /// A component that can be added at runtime to world objects the user wishes to block.
+    /// Not fully implemented.
+    /// </summary>
+    public class BlockListGenerator : MonoBehaviour
+    {
+
+        public List<Transform> HirarchyParents = new List<Transform>(); 
+        public Behaviors Behavior { get; set; } = Behaviors.Nothing;
+        public List<int> MaterialReplacementIndicies { get; set; } = new List<int>();
+        public Vector3 MoveVector { get; set; } = new Vector3();
+        private SearchTypes SearchType { get; set; } = SearchTypes.Index;  // Name, Index, IndexRange
+        private string Comment { get; set; } = "";  // Just for commenting lol.
+
+        /// <summary>
+        /// Make a blocklist from the properties of this component.
+        /// </summary>
+        /// <returns>BlockedWorldObject representing this object.</returns>
+        public BlockedWorldObject GenerateBlockedObject()
+        {
+            BlockedWorldObject blockedWorldObject = new BlockedWorldObject();
+
+            blockedWorldObject.SearchType = SearchType;
+            if (SearchType == SearchTypes.Name)
+            {
+                blockedWorldObject.SearchPattern = gameObject.name;
+            }
+            else if (SearchType == SearchTypes.Index)
+            {
+                blockedWorldObject.SearchPattern = transform.GetSiblingIndex().ToString();
+            }
+            // Remove invalid (-1) entries.
+            for (int i = MaterialReplacementIndicies.Count - 1; i >= 0; i--) if (MaterialReplacementIndicies[i] == -1) MaterialReplacementIndicies.RemoveAt(i);
+            blockedWorldObject.MaterialReplacementIndicies = MaterialReplacementIndicies.ToArray();
+            blockedWorldObject.MoveVector = new float[] { MoveVector.x, MoveVector.y, MoveVector.z };
+            blockedWorldObject.Name = Comment.Length > 0 ? Comment : gameObject.name;
+            blockedWorldObject.Behavior = Behavior;
+
+            return blockedWorldObject;   
+        }
+
+        /// <summary>
+        /// Set up this component to be used by the BlockListGenerate function in Core later.
+        /// </summary>
+        public void OnEnable()
+        {
+            Transform traverse = transform;
+            // Add all parent transforms of this object to the list where index 0 is at the root level in the scene.
+            while (traverse != null)
+            {
+                HirarchyParents.Insert(0, traverse);
+                traverse = traverse.parent;
+            }
+
+            // Pre init the material replacement indicies
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            SkinnedMeshRenderer skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+            if (meshRenderer != null || skinnedMeshRenderer != null)
+            {
+                int meshMats = meshRenderer != null ? meshRenderer.materials.Length : 0;
+                int skinnedMats = skinnedMeshRenderer != null ? skinnedMeshRenderer.materials.Length : 0;
+                int maxMats = meshMats > skinnedMats ? meshMats : skinnedMats;
+                for (int i = 0; i < maxMats; i++) MaterialReplacementIndicies.Add(-1);
+            }
+
+            Core.BlockListGenerators.Add(this);
+        }
+    }
     public class Core : MelonMod
     {
+        public static bool LogDebug = false;
+        public static bool LogInfo = true;
+
+        public static List<BlockListGenerator> BlockListGenerators = new List<BlockListGenerator>();
+
         private static readonly string ModDataFolder = Path.GetFullPath(Path.Combine("UserData", nameof(NoAIArt)));
         private static List<BlockList> BlockLists = new List<BlockList>();
         private static Material ReplacementMaterial = new Material(Shader.Find("Standard"));
         private static float lastPropBlock = Time.time;
         private static List<string> SeenBadAvis = new List<string>();
+
 
         public override void OnInitializeMelon()
         {
@@ -45,9 +122,9 @@ namespace NoAIArt
                 {
                     foreach (BlockedWorld blockedWorld in blockList.Worlds)
                     {
-                        if (MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
+                        if (Instances.CurrentWorldId == blockedWorld.Id)
                         {
-                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {Instances.CurrentWorldId}");
                             if(blockedWorld.Skybox != "Untouched")
                             {
                                 Material skyboxReplacement;
@@ -156,7 +233,7 @@ namespace NoAIArt
             bool failed = true;
             if(parrent is null) // Check root of world scene.
             {
-                if (objectSpec.SearchType.Equals("Index"))  // Get object by index (prefered)
+                if (objectSpec.SearchType == SearchTypes.Index)  // Get object by index (prefered)
                 {
                     failed = false;
                     int index;                    
@@ -168,7 +245,7 @@ namespace NoAIArt
                     }
                     RemoveBlockedWorldObject(objectSpec, SceneManager.GetActiveScene().GetRootGameObjects()[index]);
                 }
-                else if (objectSpec.SearchType.Equals("IndexRange"))  // Using a range [a,b] possibly with exclusions [e1, ..., en].
+                else if (objectSpec.SearchType == SearchTypes.IndexRange)  // Using a range [a,b] possibly with exclusions [e1, ..., en].
                 {
                     // Extract range info from pattern.
                     String[] rangeInfoS = objectSpec.SearchPattern.Split(',');
@@ -212,7 +289,7 @@ namespace NoAIArt
                         }
                     }
                 }
-                else if (objectSpec.SearchType.Equals("Name")){  // Get object by name.
+                else if (objectSpec.SearchType == SearchTypes.Name){  // Get object by name.
                     foreach (GameObject g in SceneManager.GetActiveScene().GetRootGameObjects())  // GameObject.Find is too broad and Transform.Find needs a transform to start with.
                     {
                         if (g.name == objectSpec.SearchPattern)
@@ -225,7 +302,7 @@ namespace NoAIArt
                 }
                 else
                 {
-                    MelonLogger.Error($"Search type is invalid: {objectSpec.SearchType}.\n Use either \"Name\", \"Index\", or \"IndexRange\".");
+                    MelonLogger.Error($"Search type is invalid: {objectSpec.SearchType.ToString()}.\n Use either \"Name\", \"Index\", or \"IndexRange\".");
                     return;
                 }
             }
@@ -233,7 +310,7 @@ namespace NoAIArt
             {
                 try
                 {
-                    if (objectSpec.SearchType.Equals("Index")) // Get object by index (prefered)
+                    if (objectSpec.SearchType == SearchTypes.Index) // Get object by index (prefered)
                     {
                         failed = false;
                         int index;
@@ -245,7 +322,7 @@ namespace NoAIArt
                         }
                         RemoveBlockedWorldObject(objectSpec, parrent.transform.GetChild(index).gameObject);
                     }
-                    else if (objectSpec.SearchType.Equals("IndexRange"))  // Using a range [a,b] possibly with exclusions [e1, ..., en].
+                    else if (objectSpec.SearchType == SearchTypes.IndexRange)  // Using a range [a,b] possibly with exclusions [e1, ..., en].
                     {
                         // Extract range info from pattern.
                         String[] rangeInfoS = objectSpec.SearchPattern.Split(',');
@@ -298,7 +375,7 @@ namespace NoAIArt
                             }
                         }
                     }
-                    else if (objectSpec.SearchType.Equals("Name")) // Get object by name.
+                    else if (objectSpec.SearchType == SearchTypes.Name) // Get object by name.
                     {
                         GameObject result = parrent.transform.Find(objectSpec.SearchPattern).gameObject;
                         if (result != null)
@@ -309,7 +386,7 @@ namespace NoAIArt
                     }
                     else
                     {
-                        MelonLogger.Error($"Search type is invalid: {objectSpec.SearchType}.\n Use either \"Name\", \"Index\", or \"IndexRange\".");
+                        MelonLogger.Error($"Search type is invalid: {objectSpec.SearchType.ToString()}.\n Use either \"Name\", \"Index\", or \"IndexRange\".");
                         return;
                     }
 
@@ -321,19 +398,19 @@ namespace NoAIArt
             }
             if(failed)
             {
-                MelonLogger.Error($"Could not find object. SearchType:{objectSpec.SearchType}, SearchPattern:{objectSpec.SearchPattern}, Parrent: {parrent?.name}");
+                MelonLogger.Error($"Could not find object. SearchType:{objectSpec.SearchType.ToString()}, SearchPattern:{objectSpec.SearchPattern}, Parrent: {parrent?.name}");
             }
         }
 
         internal static void RemoveBlockedWorldObject(BlockedWorldObject objectSpec, GameObject current)
         {
-            if (objectSpec.Behavior == "delete")
+            if (objectSpec.Behavior == Behaviors.Delete)
             {
                 UnityEngine.Object.Destroy(current); // Delete the current game object. NOT PARSING CHILDREN!!!
             }
             else  // Other options require parsing spec children.
             {
-                if (objectSpec.Behavior == "no-render")  // Remove mesh renderers.
+                if (objectSpec.Behavior == Behaviors.NoRender)  // Remove mesh renderers.
                 {
                     foreach (MeshRenderer m in current.GetComponents<MeshRenderer>())
                     {
@@ -344,7 +421,7 @@ namespace NoAIArt
                         UnityEngine.Object.Destroy(sm);
                     }
                 }
-                else if (objectSpec.Behavior == "change-material")  // Change mesh renderer materials.
+                else if (objectSpec.Behavior == Behaviors.ChangeMaterial)  // Change mesh renderer materials.
                 {
                     foreach (MeshRenderer m in current.GetComponents<MeshRenderer>())
                     {
@@ -375,7 +452,7 @@ namespace NoAIArt
                         }
                     }
                 }
-                else if (objectSpec.Behavior == "move")
+                else if (objectSpec.Behavior == Behaviors.Move)
                 {
                     Vector3 moveVector3 = new Vector3(objectSpec.MoveVector[0], objectSpec.MoveVector[1], objectSpec.MoveVector[2]);
                     current.transform.localPosition += moveVector3;
@@ -388,13 +465,16 @@ namespace NoAIArt
             }
         }
 
+        /// <summary>
+        /// Write GUIDs of block-able entites to console.
+        /// This method is largely unneccesary as you can get GUIDs directly in game.
+        /// </summary>
         internal void DisplayObjects()
         {
             MelonLogger.Msg(System.ConsoleColor.Green, "===============Dumping world/avatar/prop ids==============");
 
-            MelonLogger.Msg(System.ConsoleColor.Green, $"World: {MetaPort.Instance.CurrentWorldId}");
+            MelonLogger.Msg(System.ConsoleColor.Green, $"World: {Instances.CurrentWorldId}");
             MelonLogger.Msg(System.ConsoleColor.Green, "                      Avatars");
-            //MelonLogger.Msg(System.Drawing.Color.YellowGreen, $"You are using {PlayerSetup.Instance._avatcar.GetComponent<CVRAssetInfo>().objectId}");
             foreach (CVRPlayerEntity playerEntity in CVRPlayerManager.Instance.NetworkPlayers)
             {
                 MelonLogger.Msg(System.ConsoleColor.Green, $"{playerEntity.Username} using {playerEntity.ContentMetadata.AssetId}");
@@ -406,7 +486,7 @@ namespace NoAIArt
             {
                 if (potentialProp.name.StartsWith("p"))
                 {
-                    GameObject prop = potentialProp.GetAllChildren()[0];
+                    GameObject prop = potentialProp.transform.GetChild(0).gameObject;
                     string propId = prop.GetComponent<CVRAssetInfo>().objectId;
                     float distance = Vector3.Distance(prop.transform.position, PlayerSetup.Instance.GetHipBone().position);
                     MelonLogger.Msg(System.ConsoleColor.Green, $"Prop {propId}: {distance}m");
@@ -414,6 +494,80 @@ namespace NoAIArt
                 }
             }
             MelonLogger.Msg(System.ConsoleColor.Green, "====================================================");
+        }
+
+        /// <summary>
+        /// Generate a new blocklist from objects in the world with BlockListGenerator componenets.
+        /// </summary>
+        internal static void GenerateBlocklist()
+        {
+            List<BlockedWorldObject> rootLevelObejcts = new List<BlockedWorldObject>();
+            Dictionary<Transform, BlockedWorldObject > transfromToBlockedWorldObject = new Dictionary<Transform, BlockedWorldObject>();
+            BlockedWorldObject worldObject;
+
+            MelonLogger.Warning($"Generators: {BlockListGenerators.Count}");
+
+            foreach (BlockListGenerator generator in BlockListGenerators.OrderBy(generator => generator.HirarchyParents.Count))
+            {
+                MelonLogger.Warning($" generator {generator.gameObject.name}");
+                bool rootIteration = true;
+                foreach (Transform transf in generator.HirarchyParents)
+                {
+                    MelonLogger.Warning($"  transf {transf.gameObject.name}");
+                    if (transfromToBlockedWorldObject.ContainsKey(transf)) worldObject = transfromToBlockedWorldObject[transf];
+                    else if (transf.gameObject == generator.gameObject) worldObject = generator.GenerateBlockedObject();
+                    else
+                    {
+                        worldObject = new BlockedWorldObject();
+                        if (rootIteration)
+                        {
+                            // Get sibling index doesnt work at root level, get index of object at root level.
+                            var rootGos = SceneManager.GetActiveScene().GetRootGameObjects();
+                            for (int i = 0; i < rootGos.Length; i++)
+                            {
+                                if (rootGos[i].transform == transf) worldObject.SearchPattern = i.ToString();
+                            }
+                        }
+                        else worldObject.SearchPattern = transf.GetSiblingIndex().ToString();
+                        worldObject.Name = transf.gameObject.name;
+                    }
+                    MelonLogger.Warning($"  wo {worldObject.SearchPattern} {worldObject.Name} {worldObject.Behavior}");
+
+                    if (rootIteration)
+                    {
+                        if (!transfromToBlockedWorldObject.ContainsKey(transf)) rootLevelObejcts.Add(worldObject);
+                        MelonLogger.Warning($"   root iter {rootLevelObejcts.Count}");
+                    }
+                    else
+                    {
+                        if (!transfromToBlockedWorldObject.ContainsKey(transf)) transfromToBlockedWorldObject[transf.parent].Children.Add(worldObject);
+                        MelonLogger.Warning($"   child iter {transfromToBlockedWorldObject[transf.parent].Name}({transfromToBlockedWorldObject[transf.parent].Children.Count})");
+                    }
+                    rootIteration = false;
+                    transfromToBlockedWorldObject.TryAdd(transf, worldObject);
+                    MelonLogger.Warning($"  dict {transfromToBlockedWorldObject.Count}");
+
+                }
+            }
+            if (rootLevelObejcts.Count == 0)
+            {
+                MelonLogger.Error("Can't generate a blocklist with nothing to block, add NoAIArt.BlockListGenerator components to objects and configure them.");
+                return;
+            }
+
+            BlockedWorld bw = new BlockedWorld();
+            bw.Id = Instances.CurrentWorldId;
+            bw.Name = SceneManager.GetActiveScene().name;
+            bw.Objects = rootLevelObejcts;
+            MelonLogger.Warning($"bw {bw.Id} {bw.Name} {bw.Objects.Count}");
+            BlockList bl = new BlockList();
+            bl.Worlds.Add(bw);
+            bl.Comment = $"Generated blocklist for world id {Instances.CurrentWorldId}";
+            MelonLogger.Warning($"bl {bl.Worlds.Count} {bl.Comment}");
+            string json = JsonConvert.SerializeObject(bl, Formatting.Indented);
+            string div = "====================================================================";
+            MelonLogger.Msg($"Generated Blocklist:\n{div}\n{json}\n{div}");
+            
         }
 
         [HarmonyPatch]
@@ -427,9 +581,9 @@ namespace NoAIArt
                 {
                     foreach(BlockedWorld blockedWorld in blockList.Worlds)
                     {
-                        if(MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
+                        if(Instances.CurrentWorldId == blockedWorld.Id)
                         {
-                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {Instances.CurrentWorldId}");
                             if (blockedWorld.Skybox != "Untouched")
                             {
                                 Material skyboxReplacement;
@@ -529,16 +683,16 @@ namespace NoAIArt
             }
         }
 
-        internal class BlockList
+        public class BlockList
         {
             public List<BlockedWorld> Worlds = new List<BlockedWorld>();
             public List<string> Avatars = new List<string>();
             public List<string> Props = new List<string>();
-            public string Comment { get; } = "";
+            public string Comment { get; set; } = "";
             public string UpdateURL { get; set; } = "";
         }
 
-        internal class BlockedWorld
+        public class BlockedWorld
         {
             public string Id { get; set; } = "";
             public List<BlockedWorldObject> Objects = new List<BlockedWorldObject>();
@@ -546,16 +700,32 @@ namespace NoAIArt
             public string Skybox { get; set; } = "Untouched";
 
         }
-        
-        internal class BlockedWorldObject
+        public enum SearchTypes
         {
-            public string SearchType { get; set; } = "";  // Name, Index, IndexRange
+            Name,
+            Index,
+            IndexRange
+        }
+        public enum Behaviors
+        {
+            Nothing,
+            Delete,
+            NoRender,
+            ChangeMaterial,
+            Move
+        }
+
+        public class BlockedWorldObject
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            public SearchTypes SearchType { get; set; } = SearchTypes.Index;  // Name, Index, IndexRange
             public string SearchPattern { get; set; } = ""; // The name, an int (index), a list of comma seperated ints.
             public string Name { get; set; } = "";  // Just for commenting lol.
             public int[] MaterialReplacementIndicies { get; set; } = new int[0];
             public float[] MoveVector { get; set; } = new float[3];
             public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
-            public string Behavior { get; set; } = "nothing";
+            [JsonConverter(typeof(StringEnumConverter))]
+            public Behaviors Behavior { get; set; } = Behaviors.Nothing;
         }
 
 
