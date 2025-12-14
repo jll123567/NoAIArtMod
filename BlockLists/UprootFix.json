@@ -7,7 +7,7 @@
         {
           "Children":[
             {
-              "Behavior":"move",
+              "Behavior":"Move",
               "MoveVector":[
                 -0.01,
                 0,
