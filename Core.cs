@@ -13,6 +13,7 @@ using ABI_RC.Core.Savior;
 using Newtonsoft.Json;
 using ABI_RC.Core.Player;
 using RTG;
+using ABI_RC.Core.Networking.IO.Instancing;
 
 
 
@@ -45,9 +46,9 @@ namespace NoAIArt
                 {
                     foreach (BlockedWorld blockedWorld in blockList.Worlds)
                     {
-                        if (MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
+                        if (Instances.CurrentWorldId == blockedWorld.Id)
                         {
-                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {Instances.CurrentWorldId}");
                             if(blockedWorld.Skybox != "Untouched")
                             {
                                 Material skyboxReplacement;
@@ -392,7 +393,7 @@ namespace NoAIArt
         {
             MelonLogger.Msg(System.ConsoleColor.Green, "===============Dumping world/avatar/prop ids==============");
 
-            MelonLogger.Msg(System.ConsoleColor.Green, $"World: {MetaPort.Instance.CurrentWorldId}");
+            MelonLogger.Msg(System.ConsoleColor.Green, $"World: {Instances.CurrentWorldId}");
             MelonLogger.Msg(System.ConsoleColor.Green, "                      Avatars");
             //MelonLogger.Msg(System.Drawing.Color.YellowGreen, $"You are using {PlayerSetup.Instance._avatcar.GetComponent<CVRAssetInfo>().objectId}");
             foreach (CVRPlayerEntity playerEntity in CVRPlayerManager.Instance.NetworkPlayers)
@@ -427,9 +428,9 @@ namespace NoAIArt
                 {
                     foreach(BlockedWorld blockedWorld in blockList.Worlds)
                     {
-                        if(MetaPort.Instance.CurrentWorldId == blockedWorld.Id)
+                        if(Instances.CurrentWorldId == blockedWorld.Id)
                         {
-                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {MetaPort.Instance.CurrentWorldId}");
+                            MelonLogger.Msg(System.ConsoleColor.Red, $"World in block list, removing blocked objects: {Instances.CurrentWorldId}");
                             if (blockedWorld.Skybox != "Untouched")
                             {
                                 Material skyboxReplacement;
