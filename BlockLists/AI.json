@@ -1,361 +1,360 @@
 {
-  "UpdateURL":"https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AI.json",
-  "Worlds":[
+  "Worlds": [
     {
-      "Id":"a24764d7-6c75-4057-9f29-f2ea947db77a",
-      "Objects":[
+      "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
+      "Name": "Gravity Club",
+      "Objects": [
         {
-          "Children":[
+          "Children": [
             {
-              "Children":[
+              "Children": [
                 {
-                  "Children":[
+                  "Children": [
                     {
-                      "Behavior":"delete",
-                      "SearchType":"IndexRange",
-                      "SearchPattern":"1, 12"
+                      "Behavior": "delete",
+                      "SearchType": "IndexRange",
+                      "SearchPattern": "1, 12"
                     }
                   ],
-                  "SearchType":"Name",
-                  "SearchPattern":"friends"
+                  "SearchType": "Name",
+                  "SearchPattern": "friends"
                 }
               ],
-              "SearchType":"Name",
-              "SearchPattern":"ads"
+              "SearchType": "Name",
+              "SearchPattern": "ads"
             }
           ],
-          "SearchType":"Name",
-          "SearchPattern":"world"
+          "SearchType": "Name",
+          "SearchPattern": "world"
         }
-      ],
-      "Name":"Gravity Club"
+      ]
     },
     {
-      "Id":"4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
-      "Objects":[
+      "Id": "4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
+      "Name": "Astro Cafe",
+      "Objects": [
         {
-          "Children":[
+          "Children": [
             {
-              "Behavior":"delete",
-              "SearchType":"Name",
-              "SearchPattern":"SM_Poster1"
+              "Behavior": "delete",
+              "SearchType": "Name",
+              "SearchPattern": "SM_Poster1"
             },
             {
-              "Behavior":"delete",
-              "SearchType":"Name",
-              "SearchPattern":"SM_Poster2"
+              "Behavior": "delete",
+              "SearchType": "Name",
+              "SearchPattern": "SM_Poster2"
             }
           ],
-          "SearchType":"Name",
-          "SearchPattern":"nightclub"
+          "SearchType": "Name",
+          "SearchPattern": "nightclub"
         }
-      ],
-      "Name":"Astro Cafe"
+      ]
     },
     {
-      "Id":"16fddf0c-a949-4058-96d3-2233f4ea69d6",
-      "Objects":[
+      "Id": "16fddf0c-a949-4058-96d3-2233f4ea69d6",
+      "Name": "Eepy",
+      "Objects": [
         {
-          "Children":[
+          "Children": [
             {
-              "Children":[
+              "Children": [
                 {
-                  "Behavior":"change-material",
-                  "MaterialReplacementIndicies":[
+                  "Behavior": "change-material",
+                  "MaterialReplacementIndicies": [
                     2
                   ],
-                  "SearchType":"IndexRange",
-                  "SearchPattern":"13, 15"
+                  "SearchType": "IndexRange",
+                  "SearchPattern": "13, 15"
                 },
                 {
-                  "Behavior":"change-material",
-                  "MaterialReplacementIndicies":[
+                  "Behavior": "change-material",
+                  "MaterialReplacementIndicies": [
                     2
                   ],
-                  "SearchType":"Index",
-                  "SearchPattern":"20"
+                  "SearchType": "Index",
+                  "SearchPattern": "20"
                 },
                 {
-                  "Behavior":"change-material",
-                  "MaterialReplacementIndicies":[
+                  "Behavior": "change-material",
+                  "MaterialReplacementIndicies": [
                     2
                   ],
-                  "SearchType":"Index",
-                  "SearchPattern":"21"
+                  "SearchType": "Index",
+                  "SearchPattern": "21"
                 }
               ],
-              "SearchType":"Name",
-              "SearchPattern":"eepy"
+              "SearchType": "Name",
+              "SearchPattern": "eepy"
             }
           ],
-          "SearchType":"Name",
-          "SearchPattern":"Main Room"
+          "SearchType": "Name",
+          "SearchPattern": "Main Room"
         }
-      ],
-      "Name":"Eepy"
+      ]
     },
     {
-      "Id":"76a714a6-1aa4-48e9-9ff5-c79d0278eb7b",
-      "Objects":[
+      "Id": "76a714a6-1aa4-48e9-9ff5-c79d0278eb7b",
+      "Name": "CVR-OPOLY",
+      "Objects": [
         {
-          "Behavior":"delete",
-          "SearchType":"Name",
-          "SearchPattern":"SM_Prop_Picture_01 (4)"
+          "Behavior": "delete",
+          "SearchType": "Name",
+          "SearchPattern": "SM_Prop_Picture_01 (4)"
         },
         {
-          "Behavior":"delete",
-          "SearchType":"Name",
-          "SearchPattern":"SM_Prop_Picture_01 (5)"
+          "Behavior": "delete",
+          "SearchType": "Name",
+          "SearchPattern": "SM_Prop_Picture_01 (5)"
         },
         {
-          "Behavior":"delete",
-          "SearchType":"Name",
-          "SearchPattern":"SM_Prop_Picture_01 (6)"
+          "Behavior": "delete",
+          "SearchType": "Name",
+          "SearchPattern": "SM_Prop_Picture_01 (6)"
         },
         {
-          "Behavior":"delete",
-          "SearchType":"Name",
-          "SearchPattern":"SM_Prop_Picture_01 (7)"
+          "Behavior": "delete",
+          "SearchType": "Name",
+          "SearchPattern": "SM_Prop_Picture_01 (7)"
         }
-      ],
-      "Name":"CVR-OPOLY"
+      ]
     },
     {
-      "Id":"9b348c38-797f-474a-bb1f-4739a3593cbe",
-      "Skybox":"Black",
-      "Name":"The Rectifier (Tron Legacy)"
+      "Id": "9b348c38-797f-474a-bb1f-4739a3593cbe",
+      "Name": "The Rectifier (Tron Legacy)",
+      "Skybox": "Black"
     },
     {
-      "Id":"7dc584f3-8f41-49fa-b1d3-b28696736ccf",
-      "Skybox":"DarkBlue",
-      "Objects":[
+      "Id": "7dc584f3-8f41-49fa-b1d3-b28696736ccf",
+      "Name": "Ded Haven",
+      "Skybox": "DarkBlue",
+      "Objects": [
         {
-          "Children":[
+          "Children": [
             {
-              "Children":[
+              "Children": [
                 {
-                  "Children":[
+                  "Children": [
                     {
-                      "Children":[
+                      "Children": [
                         {
-                          "Children":[
+                          "Children": [
                             {
-                              "Children":[
+                              "Children": [
                                 {
-                                  "Behavior":"delete",
-                                  "SearchType":"IndexRange",
-                                  "SearchPattern":"0, 2"
+                                  "Behavior": "delete",
+                                  "SearchType": "IndexRange",
+                                  "SearchPattern": "0, 2"
                                 },
                                 {
-                                  "Children":[
+                                  "Children": [
                                     {
-                                      "Children":[
+                                      "Children": [
                                         {
-                                          "Behavior":"delete",
-                                          "SearchType":"Index",
-                                          "SearchPattern":"0"
+                                          "Behavior": "delete",
+                                          "SearchType": "Index",
+                                          "SearchPattern": "0"
                                         }
                                       ],
-                                      "SearchType":"Index",
-                                      "SearchPattern":"2"
+                                      "SearchType": "Index",
+                                      "SearchPattern": "2"
                                     }
                                   ],
-                                  "SearchType":"Index",
-                                  "SearchPattern":"3"
+                                  "SearchType": "Index",
+                                  "SearchPattern": "3"
                                 }
                               ],
-                              "SearchType":"Index",
-                              "SearchPattern":"0"
+                              "SearchType": "Index",
+                              "SearchPattern": "0"
                             }
                           ],
-                          "SearchType":"Index",
-                          "SearchPattern":"0"
+                          "SearchType": "Index",
+                          "SearchPattern": "0"
                         }
                       ],
-                      "SearchType":"Index",
-                      "SearchPattern":"0"
+                      "SearchType": "Index",
+                      "SearchPattern": "0"
                     }
                   ],
-                  "SearchType":"Index",
-                  "SearchPattern":"0"
+                  "SearchType": "Index",
+                  "SearchPattern": "0"
                 },
                 {
-                  "Behavior":"delete",
-                  "SearchType":"Index",
-                  "SearchPattern":"2"
+                  "Behavior": "delete",
+                  "SearchType": "Index",
+                  "SearchPattern": "2"
                 }
               ],
-              "SearchType":"Index",
-              "SearchPattern":"0"
+              "SearchType": "Index",
+              "SearchPattern": "0"
             }
           ],
-          "SearchType":"Index",
-          "SearchPattern":"0"
+          "SearchType": "Index",
+          "SearchPattern": "0"
         }
-      ],
-      "Name":"Ded Haven"
+      ]
     },
     {
-      "Id":"0537ad3f-ca8a-43a9-b38b-41c25e1d7157",
-      "Name":"2020 halloween world",
-      "Objects":[
+      "Id": "0537ad3f-ca8a-43a9-b38b-41c25e1d7157",
+      "Name": "2020 halloween world",
+      "Objects": [
         {
-          "SearchType":"Index",
-          "SearchPattern":"2",
-          "Children":[
+          "SearchType": "Index",
+          "SearchPattern": "2",
+          "Children": [
             {
-              "SearchType":"Index",
-              "SearchPattern":"48",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "48",
+              "Children": [
                 {
-                  "SearchType":"IndexRange",
-                  "SearchPattern":"0, 6",
-                  "Behavior":"delete"
+                  "SearchType": "IndexRange",
+                  "SearchPattern": "0, 6",
+                  "Behavior": "delete"
                 },
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"7",
-                  "Children":[
+                  "SearchType": "Index",
+                  "SearchPattern": "7",
+                  "Children": [
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"1",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "1",
+                      "Behavior": "delete"
                     },
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"2",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "2",
+                      "Behavior": "delete"
                     }
                   ]
                 },
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"8",
-                  "Children":[
+                  "SearchType": "Index",
+                  "SearchPattern": "8",
+                  "Children": [
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"1",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "1",
+                      "Behavior": "delete"
                     }
                   ]
                 },
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"9",
-                  "Children":[
+                  "SearchType": "Index",
+                  "SearchPattern": "9",
+                  "Children": [
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"1",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "1",
+                      "Behavior": "delete"
                     },
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"2",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "2",
+                      "Behavior": "delete"
                     }
                   ]
                 }
               ]
             },
             {
-              "SearchType":"Index",
-              "SearchPattern":"23",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "23",
+              "Children": [
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"1",
-                  "Children":[
+                  "SearchType": "Index",
+                  "SearchPattern": "1",
+                  "Children": [
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"2",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "2",
+                      "Behavior": "delete"
                     },
                     {
-                      "SearchType":"Index",
-                      "SearchPattern":"3",
-                      "Behavior":"delete"
+                      "SearchType": "Index",
+                      "SearchPattern": "3",
+                      "Behavior": "delete"
                     }
                   ]
                 }
               ]
             },
             {
-              "SearchType":"Index",
-              "SearchPattern":"7",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "7",
+              "Children": [
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"2",
-                  "Behavior":"delete"
+                  "SearchType": "Index",
+                  "SearchPattern": "2",
+                  "Behavior": "delete"
                 },
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"3",
-                  "Behavior":"delete"
+                  "SearchType": "Index",
+                  "SearchPattern": "3",
+                  "Behavior": "delete"
                 }
               ]
             },
             {
-              "SearchType":"Index",
-              "SearchPattern":"35",
-              "Behavior":"delete"
+              "SearchType": "Index",
+              "SearchPattern": "35",
+              "Behavior": "delete"
             },
             {
-              "SearchType":"Index",
-              "SearchPattern":"37",
-              "Behavior":"delete"
+              "SearchType": "Index",
+              "SearchPattern": "37",
+              "Behavior": "delete"
             },
             {
-              "SearchType":"Index",
-              "SearchPattern":"51",
-              "Behavior":"delete"
+              "SearchType": "Index",
+              "SearchPattern": "51",
+              "Behavior": "delete"
             }
           ]
         }
       ]
     },
     {
-      "Id":"fc84ea71-649c-4111-9fd5-e4ecfb926b93",
-      "Name":"Tron Legacy Portal",
-      "Objects":[
+      "Id": "fc84ea71-649c-4111-9fd5-e4ecfb926b93",
+      "Name": "Tron Legacy Portal",
+      "Objects": [
         {
-          "SearchType":"Index",
-          "SearchPattern":"1",
-          "Children":[
+          "SearchType": "Index",
+          "SearchPattern": "1",
+          "Children": [
             {
-              "SearchType":"IndexRange",
-              "SearchPattern":"17, 29",
-              "Behavior":"delete"
+              "SearchType": "IndexRange",
+              "SearchPattern": "17, 29",
+              "Behavior": "delete"
             }
           ]
         }
       ]
     },
     {
-      "Id":"a65b61a6-4d68-4850-be8d-abcdfbfb4081",
-      "Name":"Winter 2019",
-      "Objects":[
+      "Id": "a65b61a6-4d68-4850-be8d-abcdfbfb4081",
+      "Name": "Winter 2019",
+      "Objects": [
         {
-          "SearchType":"Index",
-          "SearchPattern":"0",
-          "Children":[
+          "SearchType": "Index",
+          "SearchPattern": "0",
+          "Children": [
             {
-              "SearchType":"Index",
-              "SearchPattern":"14",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "14",
+              "Children": [
                 {
-                  "SearchType":"IndexRange",
-                  "SearchPattern":"0, 4",
-                  "Behavior":"delete"
+                  "SearchType": "IndexRange",
+                  "SearchPattern": "0, 4",
+                  "Behavior": "delete"
                 },
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"6",
-                  "Children":[
+                  "SearchType": "Index",
+                  "SearchPattern": "6",
+                  "Children": [
                     {
-                      "SearchType":"IndexRange",
-                      "SearchPattern":"1, 2",
-                      "Behavior":"delete"
+                      "SearchType": "IndexRange",
+                      "SearchPattern": "1, 2",
+                      "Behavior": "delete"
                     }
                   ]
                 }
@@ -366,38 +365,38 @@
       ]
     },
     {
-      "Id":"514bfe07-04b9-41b8-9eec-10d85e0a36ed",
-      "Name":"The Old Ruins",
-      "Objects":[
+      "Id": "514bfe07-04b9-41b8-9eec-10d85e0a36ed",
+      "Name": "The Old Ruins",
+      "Objects": [
         {
-          "SearchType":"Index",
-          "SearchPattern":"0",
-          "Children":[
+          "SearchType": "Index",
+          "SearchPattern": "0",
+          "Children": [
             {
-              "SearchType":"Index",
-              "SearchPattern":"20",
-              "Behavior":"delete"
+              "SearchType": "Index",
+              "SearchPattern": "20",
+              "Behavior": "delete"
             }
           ]
         }
       ]
     },
     {
-      "Id":"47732aff-696d-4e0b-8767-29f13d2665ba",
-      "Name":"A world from a forgotten time....",
-      "Objects":[
+      "Id": "47732aff-696d-4e0b-8767-29f13d2665ba",
+      "Name": "A world from a forgotten time....",
+      "Objects": [
         {
-          "SearchType":"Index",
-          "SearchPattern":"3",
-          "Children":[
+          "SearchType": "Index",
+          "SearchPattern": "3",
+          "Children": [
             {
-              "SearchType":"Index",
-              "SearchPattern":"4",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "4",
+              "Children": [
                 {
-                  "SearchType":"IndexRange",
-                  "SearchPattern":"1, 12",
-                  "Behavior":"delete"
+                  "SearchType": "IndexRange",
+                  "SearchPattern": "1, 12",
+                  "Behavior": "delete"
                 }
               ]
             }
@@ -406,38 +405,64 @@
       ]
     },
     {
-      "Id":"28c32ca0-b967-4fb9-a28e-5d2322c2678a",
-      "Name":"Summer 2020",
-      "Objects":[
+      "Id": "28c32ca0-b967-4fb9-a28e-5d2322c2678a",
+      "Name": "Summer 2020",
+      "Objects": [
         {
-          "SearchType":"Index",
-          "SearchPattern":"0",
-          "Children":[
+          "SearchType": "Index",
+          "SearchPattern": "0",
+          "Children": [
             {
-              "SearchType":"Index",
-              "SearchPattern":"15",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "15",
+              "Children": [
                 {
-                  "SearchType":"IndexRange",
-                  "SearchPattern":"1,11,9",
-                  "Behavior":"delete"
+                  "SearchType": "IndexRange",
+                  "SearchPattern": "1,11,9",
+                  "Behavior": "delete"
                 }
               ]
             },
             {
-              "SearchType":"Index",
-              "SearchPattern":"23",
-              "Children":[
+              "SearchType": "Index",
+              "SearchPattern": "23",
+              "Children": [
                 {
-                  "SearchType":"Index",
-                  "SearchPattern":"6",
-                  "Children":[
+                  "SearchType": "Index",
+                  "SearchPattern": "6",
+                  "Children": [
                     {
-                      "SearchType":"IndexRange",
-                      "SearchPattern":"1,4",
-                      "Behavior":"delete"
+                      "SearchType": "IndexRange",
+                      "SearchPattern": "1,4",
+                      "Behavior": "delete"
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "ef802864-0ae4-4b4c-9533-f29cbbd745af",
+      "Name": "Code Lyoko Tower",
+      "Objects": [
+        {
+          "SearchType": "Index",
+          "SearchPattern": "0",
+          "Name": "Lyoko tower",
+          "Children": [
+            {
+              "SearchType": "Index",
+              "SearchPattern": "2",
+              "Name": "mirror",
+              "Children": [
+                {
+                  "SearchType": "IndexRange",
+                  "SearchPattern": "3,20,7,8",
+                  "Name": "Removing the wall too since it's not too important.",
+                  "Behavior": "delete"
                 }
               ]
             }
@@ -446,7 +471,7 @@
       ]
     }
   ],
-  "Avatars":[
+  "Avatars": [
     "696d2ab2-b08e-4e75-b9af-81fea22217a4",
     "32e767e4-dd9f-421e-b899-d32254c8172c",
     "02a77286-5877-478a-896b-e1d367af3dea",
@@ -454,7 +479,7 @@
     "bcf693da-e59d-42f5-9632-884b568be999",
     "c3927376-58d5-4d79-a667-b1e082edce46"
   ],
-  "Props":[
+  "Props": [
     "0d02a748-9945-4360-93db-bf5712c78671",
     "13fa18f6-705b-4c71-b3ee-f53309cc7699",
     "1f9b8850-d7f3-46fb-ba7b-45c0e61cea67",
