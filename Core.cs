@@ -14,7 +14,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static NoAIArt.Core;
 using System.Linq;
 
 
@@ -22,6 +21,51 @@ using System.Linq;
 
 namespace NoAIArt
 {
+    public enum SearchTypes
+    {
+        Name,
+        Index,
+        IndexRange
+    }
+    public enum Behaviors
+    {
+        Nothing,
+        Delete,
+        NoRender,
+        ChangeMaterial,
+        Move
+    }
+
+    public class BlockList
+    {
+        public List<BlockedWorld> Worlds = new List<BlockedWorld>();
+        public List<string> Avatars = new List<string>();
+        public List<string> Props = new List<string>();
+        public string Comment { get; set; } = "";
+        public string UpdateURL { get; set; } = "";
+    }
+
+    public class BlockedWorld
+    {
+        public string Id { get; set; } = "";
+        public List<BlockedWorldObject> Objects = new List<BlockedWorldObject>();
+        public string Name { get; set; } = ""; // Optional to give the name of the world.
+        public string Skybox { get; set; } = "Untouched";
+
+    }
+    
+    public class BlockedWorldObject
+    {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public SearchTypes SearchType { get; set; } = SearchTypes.Index;  // Name, Index, IndexRange
+        public string SearchPattern { get; set; } = ""; // The name, an int (index), a list of comma seperated ints.
+        public string Name { get; set; } = "";  // Just for commenting lol.
+        public int[] MaterialReplacementIndicies { get; set; } = new int[0];
+        public float[] MoveVector { get; set; } = new float[3];
+        public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Behaviors Behavior { get; set; } = Behaviors.Nothing;
+    }
     /// <summary>
     /// A component that can be added at runtime to world objects the user wishes to block.
     /// Not fully implemented.
@@ -683,50 +727,7 @@ namespace NoAIArt
             }
         }
 
-        public class BlockList
-        {
-            public List<BlockedWorld> Worlds = new List<BlockedWorld>();
-            public List<string> Avatars = new List<string>();
-            public List<string> Props = new List<string>();
-            public string Comment { get; set; } = "";
-            public string UpdateURL { get; set; } = "";
-        }
-
-        public class BlockedWorld
-        {
-            public string Id { get; set; } = "";
-            public List<BlockedWorldObject> Objects = new List<BlockedWorldObject>();
-            public string Name { get; set; } = ""; // Optional to give the name of the world.
-            public string Skybox { get; set; } = "Untouched";
-
-        }
-        public enum SearchTypes
-        {
-            Name,
-            Index,
-            IndexRange
-        }
-        public enum Behaviors
-        {
-            Nothing,
-            Delete,
-            NoRender,
-            ChangeMaterial,
-            Move
-        }
-
-        public class BlockedWorldObject
-        {
-            [JsonConverter(typeof(StringEnumConverter))]
-            public SearchTypes SearchType { get; set; } = SearchTypes.Index;  // Name, Index, IndexRange
-            public string SearchPattern { get; set; } = ""; // The name, an int (index), a list of comma seperated ints.
-            public string Name { get; set; } = "";  // Just for commenting lol.
-            public int[] MaterialReplacementIndicies { get; set; } = new int[0];
-            public float[] MoveVector { get; set; } = new float[3];
-            public List<BlockedWorldObject> Children = new List<BlockedWorldObject>();
-            [JsonConverter(typeof(StringEnumConverter))]
-            public Behaviors Behavior { get; set; } = Behaviors.Nothing;
-        }
+        
 
 
     }
