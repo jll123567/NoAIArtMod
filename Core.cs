@@ -221,55 +221,63 @@ namespace NoAIArt
         {
             BlockLists = new List<BlockList>();
             int worldTally = 0, propTally = 0, avatarTally = 0;
-            var blockListPaths = Directory.GetFiles(ModDataFolder, "*.json");
-            foreach (var blockListPath in blockListPaths)
+            if (Directory.Exists(ModDataFolder))
             {
-                try
+                var blockListPaths = Directory.GetFiles(ModDataFolder, "*.json");
+                foreach (var blockListPath in blockListPaths)
                 {
-                    string blockListContent = File.ReadAllText(blockListPath);
-                    BlockList? deserealizedBlockList = JsonConvert.DeserializeObject<BlockList>(blockListContent);
-
-                    if (deserealizedBlockList is null)
+                    try
                     {
-                        MelonLogger.Error($"Your Blocklist({blockListPath}) is empty.");
-                        continue;
-                    }
+                        string blockListContent = File.ReadAllText(blockListPath);
+                        BlockList? deserealizedBlockList = JsonConvert.DeserializeObject<BlockList>(blockListContent);
 
-
-
-                    string pattern = @"^https:\/\/raw\.githubusercontent\.com\/.*\.json$";  // Updater
-                    if (Regex.IsMatch(deserealizedBlockList.UpdateURL, pattern))  // Only update if pulling from a verified source.
-                    {
-                        string latestBlockList = "";
-                        HttpClient httpClient = new HttpClient();
-                        httpClient.DefaultRequestHeaders.Add("User-Agent", "NoAIArtMod");
-                        Task<string> request = httpClient.GetStringAsync(deserealizedBlockList.UpdateURL);
-                        request.Wait();
-                        latestBlockList = request.Result;
-                        if (!blockListContent.Equals(latestBlockList))
+                        if (deserealizedBlockList is null)
                         {
-                            MelonLogger.Msg($"Found update for blocklist({blockListPath}), writing.");
-                            File.WriteAllText(blockListPath, latestBlockList);
-                            deserealizedBlockList = JsonConvert.DeserializeObject<BlockList>(latestBlockList);
+                            MelonLogger.Error($"Your Blocklist({blockListPath}) is empty.");
+                            continue;
                         }
+
+
+
+                        string pattern = @"^https:\/\/raw\.githubusercontent\.com\/.*\.json$";  // Updater
+                        if (Regex.IsMatch(deserealizedBlockList.UpdateURL, pattern))  // Only update if pulling from a verified source.
+                        {
+                            string latestBlockList = "";
+                            HttpClient httpClient = new HttpClient();
+                            httpClient.DefaultRequestHeaders.Add("User-Agent", "NoAIArtMod");
+                            Task<string> request = httpClient.GetStringAsync(deserealizedBlockList.UpdateURL);
+                            request.Wait();
+                            latestBlockList = request.Result;
+                            if (!blockListContent.Equals(latestBlockList))
+                            {
+                                MelonLogger.Msg($"Found update for blocklist({blockListPath}), writing.");
+                                File.WriteAllText(blockListPath, latestBlockList);
+                                deserealizedBlockList = JsonConvert.DeserializeObject<BlockList>(latestBlockList);
+                            }
+                        }
+                        else if (!deserealizedBlockList.UpdateURL.Equals(""))
+                        {
+                            MelonLogger.Warning($"This blocklist ({blockListPath}) has a update URL that does not match\n {pattern}\nNot updating.");
+                        }
+
+                        BlockLists.Add(deserealizedBlockList);
+                        worldTally += deserealizedBlockList.Worlds.Count;
+                        propTally += deserealizedBlockList.Props.Count;
+                        avatarTally += deserealizedBlockList.Avatars.Count;
                     }
-                    else if (!deserealizedBlockList.UpdateURL.Equals(""))
+                    catch (Exception e)
                     {
-                        MelonLogger.Warning($"This blocklist ({blockListPath}) has a update URL that does not match\n {pattern}\nNot updating.");
+                        MelonLogger.Error($"Your Blocklist({blockListPath}) is malformed. Specifics below:\n\n{e.Message}\n\n{File.ReadAllText(blockListPath)}");
                     }
 
-                    BlockLists.Add(deserealizedBlockList);
-                    worldTally += deserealizedBlockList.Worlds.Count;
-                    propTally += deserealizedBlockList.Props.Count;
-                    avatarTally += deserealizedBlockList.Avatars.Count;
                 }
-                catch (Exception e)
-                {
-                    MelonLogger.Error($"Your Blocklist({blockListPath}) is malformed. Specifics below:\n\n{e.Message}\n\n{File.ReadAllText(blockListPath)}");
-                }
-
+                MelonLogger.Msg($"NoAiArt Initialized: Found {worldTally} world(s), {propTally} prop(s), and {avatarTally} avatars(s).");
             }
-            MelonLogger.Msg($"NoAiArt Initialized: Found {worldTally} world(s), {propTally} prop(s), and {avatarTally} avatars(s).");
+            else
+            {
+                Directory.CreateDirectory(ModDataFolder);
+                MelonLogger.Warning("The blocklist folder was not found, creating...\nPlease add blocklists to the folder.");
+            }
         }
 
         internal static void FindBlockedWorldObject(BlockedWorldObject objectSpec, GameObject? parrent = null)
