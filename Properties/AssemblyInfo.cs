@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(NoAIArt.Core), "NoAIArt", "1.4.0", "JillTheSomething", "https://github.com/jll123567/NoAIArt/releases")]
+[assembly: MelonInfo(typeof(NoAIArt.Core), "NoAIArt", "2.0.0", "JillTheSomething", "https://github.com/jll123567/NoAIArt/releases")]
 [assembly: MelonGame("ChilloutVR", "ChilloutVR")]
 [assembly: MelonPlatform(MelonPlatformAttribute.CompatiblePlatforms.WINDOWS_X64)]
 [assembly: MelonPlatformDomain(MelonPlatformDomainAttribute.CompatibleDomains.MONO)]
