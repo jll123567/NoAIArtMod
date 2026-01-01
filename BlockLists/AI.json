@@ -2,33 +2,221 @@
   "UpdateURL":"https://raw.githubusercontent.com/jll123567/NoAIArtMod/refs/heads/main/BlockLists/AI.json",
   "Worlds": [
     {
-      "Id": "a24764d7-6c75-4057-9f29-f2ea947db77a",
-      "Name": "Gravity Club",
       "Objects": [
         {
           "Children": [
             {
-              "Children": [
-                {
-                  "Children": [
-                    {
-                      "Behavior": "Delete",
-                      "SearchType": "IndexRange",
-                      "SearchPattern": "1, 12"
-                    }
-                  ],
-                  "SearchType": "Name",
-                  "SearchPattern": "friends"
-                }
+              "Children": [],
+              "SearchType": "Index",
+              "SearchPattern": "139",
+              "Name": "Drop pictures",
+              "MaterialReplacementIndicies": [
+                1
               ],
-              "SearchType": "Name",
-              "SearchPattern": "ads"
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "ChangeMaterial"
             }
           ],
-          "SearchType": "Name",
-          "SearchPattern": "world"
+          "SearchType": "Index",
+          "SearchPattern": "4",
+          "Name": "Furnishings",
+          "MaterialReplacementIndicies": [],
+          "MoveVector": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Behavior": "Nothing"
         }
-      ]
+      ],
+      "Id": "64b81c70-e614-403e-938e-3867c6b3a9ec",
+      "Name": "Tiny home world 2026",
+      "Skybox": "Untouched"
+    },
+    {
+      "Objects": [
+        {
+          "Children": [
+            {
+              "Children": [],
+              "SearchType": "IndexRange",
+              "SearchPattern": "216,228",
+              "Name": "Drop Picture",
+              "MaterialReplacementIndicies": [
+                0
+              ],
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "ChangeMaterial"
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "SearchType": "Index",
+                  "SearchPattern": "1",
+                  "Name": "drop picture",
+                  "MaterialReplacementIndicies": [
+                    0
+                  ],
+                  "MoveVector": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Behavior": "ChangeMaterial"
+                }
+              ],
+              "SearchType": "Index",
+              "SearchPattern": "171",
+              "Name": "PhotoFrame縦長 (1)",
+              "MaterialReplacementIndicies": [],
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "Nothing"
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "SearchType": "Index",
+                  "SearchPattern": "1",
+                  "Name": "drop picture",
+                  "MaterialReplacementIndicies": [
+                    0
+                  ],
+                  "MoveVector": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Behavior": "ChangeMaterial"
+                }
+              ],
+              "SearchType": "Index",
+              "SearchPattern": "177",
+              "Name": "PhotoFrame縦長 (2)",
+              "MaterialReplacementIndicies": [],
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "Nothing"
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "SearchType": "Index",
+                  "SearchPattern": "1",
+                  "Name": "Drop Picture",
+                  "MaterialReplacementIndicies": [
+                    0
+                  ],
+                  "MoveVector": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Behavior": "ChangeMaterial"
+                }
+              ],
+              "SearchType": "Index",
+              "SearchPattern": "156",
+              "Name": "PhotoFrame縦長",
+              "MaterialReplacementIndicies": [],
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "Nothing"
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "SearchType": "Index",
+                  "SearchPattern": "1",
+                  "Name": "drop picture",
+                  "MaterialReplacementIndicies": [
+                    0
+                  ],
+                  "MoveVector": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Behavior": "ChangeMaterial"
+                }
+              ],
+              "SearchType": "Index",
+              "SearchPattern": "212",
+              "Name": "PhotoFrame横長 (10)",
+              "MaterialReplacementIndicies": [],
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "Nothing"
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "SearchType": "Index",
+                  "SearchPattern": "1",
+                  "Name": "drop picture",
+                  "MaterialReplacementIndicies": [
+                    0
+                  ],
+                  "MoveVector": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Behavior": "ChangeMaterial"
+                }
+              ],
+              "SearchType": "Index",
+              "SearchPattern": "213",
+              "Name": "PhotoFrame横長 (11)",
+              "MaterialReplacementIndicies": [],
+              "MoveVector": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Behavior": "Nothing"
+            }
+          ],
+          "SearchType": "Index",
+          "SearchPattern": "5",
+          "Name": "furniture",
+          "MaterialReplacementIndicies": [],
+          "MoveVector": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Behavior": "Nothing"
+        }
+      ],
+      "Id": "c01a261d-cee4-44c5-afd6-19c38c4cd728",
+      "Name": "2025 NEW QUEST PUBL;IC",
+      "Skybox": "Untouched"
     },
     {
       "Id": "4ae9c0fa-7121-4f25-84b3-d24f07ef8ce9",
